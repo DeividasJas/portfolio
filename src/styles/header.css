@@ -4,7 +4,8 @@
     --toggle-line-height: 3px;
     --toggle-line-width: 40px;
     --nav-btn-height: 20px;
-    --animation-timing: 400ms ease-in-out;
+    --animation-timing: 200ms ease-in-out;
+    --animation-timing-slow: 800ms ease-in-out;
     --x-width: calc((var(--nav-btn-height) * 1.41421356237));
     /* --x-width-computed: 20.28px; */
 
@@ -82,40 +83,41 @@
     opacity: 1;
 }
 
-.sidebar ul {
+.sidebar-content {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
-.sidebar ul li {
-    /* height: 50px; */
-}
-
-
-/* @media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
     .sidebar {
-      opacity: 0;
-      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        opacity: 0;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     }
-  
+
     .sidebar-active {
-      opacity: 1;
-    }
-  } */
-  @media (max-width: 767px) {
-    .sidebar {
-        width: 100vw;
-        height: 100vh;
-        transition: none; /* No transition on media query change */
+        opacity: 1;
     }
 }
-  @media (min-width: 767px) {
+
+/* @media (max-width: 767px) {
     .sidebar {
-        width: 100vw;
-        height: 100vh;
-        transition: none; /* No transition on media query change */
+
+        transition: none;
+
     }
 }
+
+@media (min-width: 767px) {
+    .sidebar {
+
+        transition: none;
+
+    }
+} */
 
 @media screen and (min-width: 768px) {
     .sidebar {
@@ -128,8 +130,6 @@
         opacity: 1;
         padding: 0;
         visibility: hidden;
-
-
         transition: opacity var(--animation-timing), transform var(--animation-timing),
             width var(--animation-timing), height var(--animation-timing);
     }
@@ -139,8 +139,19 @@
         height: 600px;
         visibility: visible;
     }
+
+    .sidebar-content {
+        /* width: 0; */
+        /* height: 0; */
+        opacity: 0;
+        position: absolute;
+        bottom: -310px;
+        transition: top var(--animation-timing-slow), bottom var(--animation-timing-slow),
+            opacity var(--animation-timing-slow);
+    }
+
+    .sidebar-content-active {
+        opacity: 1;
+        bottom: 0;
+    }
 }
-
-
-
-  

@@ -11,9 +11,9 @@ export default function Sidebar() {
       ></button>
 
       <nav className={`sidebar text-zinc-800 ${clicked && 'sidebar-active'}`}>
-        {clicked && (
+
           <>
-            <div className='sidebar-content'>
+            <div className={`sidebar-content ${clicked && 'sidebar-content-active'}`}>
               <ul className=''>
                 {navbarLinks.map((link) => (
                   <li>
@@ -23,7 +23,6 @@ export default function Sidebar() {
               </ul>
               <div>
                 <p>SAY HELLO</p>
-                <p>email</p>
               </div>
               <div>
                 <p>facebook</p>
@@ -32,7 +31,7 @@ export default function Sidebar() {
               </div>
             </div>
           </>
-        )}
+
       </nav>
     </>
   );
