@@ -7,28 +7,32 @@ export default function Sidebar() {
     <>
       <button
         className={`nav-button  ${clicked && 'nav-btn-active'}`}
-        onClick={() => setClicked((p) => !p)}></button>
+        onClick={() => setClicked((p) => !p)}
+      ></button>
 
-
-        
-      <nav className={`sidebar ${clicked && 'sidebar-active'}`}>
-        <ul className=''>
-          {navbarLinks.map((link) => (
-            <li>
-              <Link to={link.path}>{link.title}</Link>
-            </li>
-          ))}
-        </ul>
-        <div>
-            <p>SAY HELLO</p>
-            <p>jasas.code@gmail.com</p>
-            <p>gamerdeiver</p>
-        </div>
-        <div>
-            <p>facebook</p>
-            <p>linkedin</p>
-            <p>github</p>
-        </div>
+      <nav className={`sidebar text-zinc-800 ${clicked && 'sidebar-active'}`}>
+        {clicked && (
+          <>
+            <div className='sidebar-content'>
+              <ul className=''>
+                {navbarLinks.map((link) => (
+                  <li>
+                    <Link to={link.path}>{link.title}</Link>
+                  </li>
+                ))}
+              </ul>
+              <div>
+                <p>SAY HELLO</p>
+                <p>email</p>
+              </div>
+              <div>
+                <p>facebook</p>
+                <p>linkedin</p>
+                <p>github</p>
+              </div>
+            </div>
+          </>
+        )}
       </nav>
     </>
   );
