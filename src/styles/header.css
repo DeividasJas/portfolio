@@ -1,0 +1,101 @@
+:root {
+    --accent-color: #3f3f46;
+    --accent-color-two: #71717a;
+    --toggle-line-height: 3px;
+    --toggle-line-width: 40px;
+    --nav-btn-height: 20px;
+    --animation-timing: 400ms ease-in-out;
+    --x-width: calc((var(--nav-btn-height) * 1.41421356237));
+    /* --x-width-computed: 20.28px; */
+
+}
+
+.nav-button {
+    box-sizing: border-box;
+    /* background-color: red; */
+    position: absolute;
+    width: var(--toggle-line-width);
+    height: var(--nav-btn-height);
+    z-index: 2;
+    top: 35px;
+    right: 75px;
+
+}
+
+.nav-button,
+.nav-button::after,
+.nav-button::before {
+    transition: opacity var(--animation-timing), width var(--animation-timing),
+        rotate var(--animation-timing), background-color var(--animation-timing),
+        translate var(--animation-timing);
+}
+
+.nav-button::after,
+.nav-button::before {
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: var(--accent-color);
+    height: var(--toggle-line-height);
+    width: var(--toggle-line-width);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-button::after {
+    left: 0;
+    top: 0;
+}
+
+.nav-button::before {
+    left: 0;
+    bottom: 0;
+}
+
+.nav-btn-active::after {
+    transform: rotate(-45deg) translate(-2px, 10px);
+    width: var(--x-width);
+}
+
+.nav-btn-active::before {
+    transform: rotate(45deg) translate(-2px, -10px);
+    width: var(--x-width);
+}
+
+.sidebar {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--accent-color-two);
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    padding: 100px 60px 100px 60px;
+    transition: opacity var(--animation-timing), transform var(--animation-timing),
+        width var(--animation-timing), height var(--animation-timing);
+}
+
+.sidebar-active {
+    width: 100%;
+    opacity: 1;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar ul li {
+    height: 50px;
+    font-size: 30px;
+}
+
+@media screen and (min-width: 768px) {
+    .sidebar {
+        position: absolute;
+        /* background-color: red; */
+        width: 200px;
+        height: 200px;
+        right: 50px;
+        top: 25px;
+    }
+}
