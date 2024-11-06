@@ -1,9 +1,9 @@
-type navbarLinks = {
+type NavbarLinks = {
   title: string;
   path: string;
 };
 
-export const navbarLinks: navbarLinks[] = [
+export const navbarLinks: NavbarLinks[] = [
   {
     title: 'Home',
     path: '/',
