@@ -1,0 +1,28 @@
+@media screen and (min-width: 768px) {
+    .container {
+        height: 100vh;
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        scroll-behavior: smooth; /* Smooth scrolling for all interactions */
+    }
+  
+    .section {
+        height: 100vh; /* Each section fills the viewport height */
+        scroll-snap-align: start; /* Snap each section to the top */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+    }
+  
+    /* Optional: Hide scrollbars for a cleaner look */
+    .container::-webkit-scrollbar {
+        display: none;
+    }
+  }
+  
+
+  .active-scroll-spy {
+    background-color: yellowgreen;
+    border-radius: 15px;
+  }

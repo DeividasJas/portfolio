@@ -1,78 +1,81 @@
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { navbarLinks } from '../types/navbarLinkTypes';
-import { useState } from 'react';
-export default function Sidebar() {
-  const [clicked, setClicked] = useState(true);
+import { navbarLinks, navbarSocials } from '../types/navbarLinkTypes';
+import { handleResizeTransition } from '../utils/ResizeTransitionHandler';
+import { handleClickOutside } from '../utils/closeSidebar';
 
-  const handleClick = () => {
+export default function Sidebar() {
+  const [clicked, setClicked] = useState<boolean>(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handleButtonClick = () => {
     setClicked((prev) => !prev);
   };
-  
-  const sidebarDOM = document.getElementsByClassName('sidebar') as HTMLCollectionOf<HTMLElement>;
-  let resizing = false;
-  
-  // Function to disable transition
-  const disableTransition = () => {
-    if (sidebarDOM[0]) {
-      sidebarDOM[0].style.transition = 'none';
-    }
-  };
-  
-  // Function to enable transition
-  const enableTransition = () => {
-    if (sidebarDOM[0]) {
-      sidebarDOM[0].style.transition = ''; // Resets to original transition in CSS
-    }
-  };
-  
-  // Resize handler
-  const handleResize = () => {
-    if (!resizing) {
-      disableTransition();
-      resizing = true;
-    }
-  
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      enableTransition();
-      resizing = false;
-    }, 200); // Delay after resizing stops
-  };
-  
-  // Add the resize event listener
-  let timeoutId: ReturnType<typeof setTimeout>;
-  window.addEventListener('resize', handleResize);
-  
 
+  handleResizeTransition('.sidebar');
+  // const { clicked, sidebarRef, buttonRef, handleButtonClick } = useCloseSideBar();
+
+  useEffect(() => {
+    const closeSideBar = (event) => {
+      handleClickOutside(event, sidebarRef, buttonRef, clicked, setClicked);
+    };
+
+    // Attach event listener
+    document.addEventListener('click', closeSideBar);
+
+    // Cleanup event listener
+    return () => {
+      document.removeEventListener('click', closeSideBar);
+    };
+  });
   return (
     <>
       <button
         className={`nav-button  ${clicked && 'nav-btn-active'}`}
-        onClick={handleClick}
+        onClick={handleButtonClick}
+        ref={buttonRef}
       />
-
-      <nav className={`sidebar text-zinc-800 ${clicked && 'sidebar-active'}`}>
-        <>
-          <div
-            className={`sidebar-content ${clicked && 'sidebar-content-active'}`}
-          >
-            <ul className=''>
-              {navbarLinks.map((link) => (
-                <li>
-                  <Link to={link.path}>{link.title}</Link>
-                </li>
-              ))}
-            </ul>
-            <div>
-              <p>SAY HELLO</p>
-            </div>
-            <div>
-              <p>facebook</p>
-              <p>linkedin</p>
-              <p>github</p>
-            </div>
+      <nav
+        className={`sidebar text-zinc-800 ${clicked && 'sidebar-active'}`}
+        ref={sidebarRef}
+      >
+        <div
+          className={`sidebar-content ${clicked && 'sidebar-content-active'}`}
+        >
+          <ul className='flex flex-col items-start justify-start w-full gap-2'>
+            {navbarLinks.map((link) => (
+              <li key={link.path}>
+                <Link to={link.path} onClick={handleButtonClick}>
+                  {link.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className='relative flex flex-col items-start justify-start w-full gap-2'>
+            <p>SAY HELLO 📩</p>
+            <a
+              href='mailto:jasas.code@gmail.com'
+              className='mail-hover'
+              onClick={handleButtonClick}
+            >
+              jasas.code@gmail.com
+            </a>
           </div>
-        </>
+          <ul className='flex flex-col items-start justify-start w-full gap-2'>
+            {navbarSocials.map((link) => (
+              <li key={link.path}>
+                <Link
+                  to={link.path}
+                  onClick={handleButtonClick}
+                  target='_blank'
+                >
+                  {link.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </nav>
     </>
   );

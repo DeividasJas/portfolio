@@ -17,3 +17,19 @@ export const navbarLinks: NavbarLinks[] = [
     path: '/projects',
   },
 ];
+
+type NavbarSocials = {
+  title: string;
+  path: string;
+};
+
+export const navbarSocials: NavbarSocials[] = [
+  {
+    title: 'LinkedIn',
+    path: 'https://www.linkedin.com/in/deividasjasas/',
+  },
+  {
+    title: 'GitHub',
+    path: 'https://github.com/DeividasJas',
+  },
+];
