@@ -12,7 +12,6 @@ export const handleClickOutside = (
     !buttonRef.current.contains(event.target)
   ) {
     setClicked(false); // Close sidebar if clicking outside
-    console.log(222);
   }
   if (
     buttonRef.current &&

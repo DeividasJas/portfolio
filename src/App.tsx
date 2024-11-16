@@ -7,7 +7,7 @@ import Layout from './layout/Layout';
 function App() {
   const location = useLocation();
 
-  console.log(location.pathname === '/');
+  // console.log(location.pathname === '/');
 
   return (
     <>
@@ -20,7 +20,7 @@ function App() {
               : 'flex flex-col h-full'
           } grow`}
         >
-          <main className='border grow'>
+          <main className='grow'>
             <Outlet />
           </main>
           <Footer />

@@ -57,6 +57,12 @@ export default tseslint.config({
 
 PROJECT LIST:
   1. basketball registration
+      summary: A basketball registration page where anyone can create an account and register for basketball games. The platform is designed to track whether enough players have signed up to play basketball on Tuesday evenings or another selected day.
+      
+      OR
+      
+      A basketball registration page built with Next.js and Tailwind CSS, featuring user authentication powered by Kinde. Users can create accounts and register for basketball games. The platform helps track whether enough players have signed up to play on Tuesday evenings or other selected days.
+
   2. Mums website
   3. Product landing page
   4. Wander Vilnius
