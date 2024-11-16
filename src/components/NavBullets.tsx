@@ -2,7 +2,7 @@ import './../styles/navBullet.css';
 import ScrollSpy from 'react-scrollspy-navigation';
 export default function NavBullets() {
   return (
-    <ScrollSpy activeClass='nav-active' behavior='instant'>
+    <ScrollSpy activeClass='nav-active' behavior='smooth'>
       <nav>
         <ul className='flex flex-col items-center justify-center gap-4 min-h-min'>
           <li>
@@ -13,6 +13,9 @@ export default function NavBullets() {
           </li>
           <li>
             <a href="#target-3" className='nav-bullet-inactive'></a>
+          </li>
+          <li>
+            <a href="#target-4" className='nav-bullet-inactive'></a>
           </li>
         </ul>
       </nav>

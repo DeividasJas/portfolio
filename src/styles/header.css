@@ -84,8 +84,6 @@
     font-size: 20px;
     height: 100%;
     width: 100%;
-
-
 }
 
 
@@ -134,7 +132,7 @@
 
 @media screen and (min-width: 768px) {
     .sidebar {
-        position: absolute;
+        position: fixed;
         /* background-color: red; */
         width: 0px;
         height: 0px;
@@ -144,6 +142,7 @@
         visibility: hidden;
         transition: opacity var(--animation-timing), transform var(--animation-timing),
             width var(--animation-timing), height var(--animation-timing);
+        overflow: hidden;
     }
 
     .sidebar-active {

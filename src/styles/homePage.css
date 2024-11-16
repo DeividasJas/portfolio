@@ -1,5 +1,5 @@
 @media screen and (min-width: 768px) {
-    .container {
+    .snap-scroll-container {
         height: 100vh;
         scroll-snap-type: y mandatory;
         overflow-y: scroll;
@@ -26,3 +26,36 @@
     background-color: yellowgreen;
     border-radius: 15px;
   }
+
+
+  /* @media screen and (min-width: 768px) {
+    .snap-scroll-container {
+        height: auto;
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+
+        min-width: 100% ;
+
+    }
+  
+    .section {
+        height: 1000px; 
+        scroll-snap-align: start;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+    }
+  
+    
+    .snap-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+  } */
+  
+
+  /* .active-scroll-spy {
+    background-color: yellowgreen;
+    border-radius: 15px;
+  } */

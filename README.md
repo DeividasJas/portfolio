@@ -48,3 +48,24 @@ export default tseslint.config({
   },
 })
 ```
+
+
+
+1. For this project I will be using mostly tailwinds ZINC color pallet from tailwind
+2.
+
+
+PROJECT LIST:
+  1. basketball registration
+  2. Mums website
+  3. Product landing page
+  4. Wander Vilnius
+
+  One section should include the following:
+    1. screenshot
+    2. title
+    3. summary, a 2-3 sentence description of the project, covering:
+      What the project is.
+      The technologies you used.
+      A notable feature or challenge you overcame.
+    4. Link to deployed website
