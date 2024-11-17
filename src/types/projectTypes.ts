@@ -1,4 +1,4 @@
-import BasketJoinLogo from '@/assets/basketball.svg';
+import basketballAssets from '@/assets/basketjoin/basketjoin';
 export type ImageType = {
   src: string;
   alt: string;
@@ -18,23 +18,23 @@ const websiteProjects: WebsiteProjectType[] = [
     title: 'BasketJoin',
     link: 'https://www.localhost:3000',
     published: true,
-    logoSrc: BasketJoinLogo,
+    logoSrc: basketballAssets.logo,
 
     images: [
       {
-        src: 'src/assets/basketball1-about-page.png',
+        src: basketballAssets.basketball1,
         alt: 'BasketJoin About Page',
       },
       {
-        src: 'src/assets/basketball2-schedule-page.png',
+        src: basketballAssets.basketball2,
         alt: 'BasketJoin Schedule Page',
       },
       {
-        src: 'src/assets/basketball3-signup-page.png',
+        src: basketballAssets.basketball3,
         alt: 'BasketJoin Signup Page',
       },
       {
-        src: 'src/assets/basketball4-player-status-page.png',
+        src: basketballAssets.basketball4,
         alt: 'BasketJoin Player Status Page',
       },
     ],
@@ -92,7 +92,7 @@ const websiteProjects: WebsiteProjectType[] = [
     ],
     description:
       'A static landing page for a psychologist, designed to provide information about their services, approach, and contact details. The page offers a clean, professional layout to ensure visitors feel welcomed and informed.',
-  },{}
+  },
 ];
 
 export default websiteProjects;

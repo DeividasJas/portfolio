@@ -11,7 +11,7 @@ export default function ProjectsPage() {
   return (
     <div className='flex flex-col gap-4 '>
       <h1 className='mt-8 text-xl text-center md:text-3xl'>Work</h1>
-      <h3 className='mt-2 text-lg text-center md:text-xl'>
+      <h3 className='text-lg text-center md:text-xl'>
         Select the work I've taken in the past
       </h3>
 

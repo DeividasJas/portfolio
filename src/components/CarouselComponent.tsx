@@ -1,3 +1,5 @@
+import Autoplay from "embla-carousel-autoplay"
+
 import {
   Carousel,
   CarouselContent,
@@ -21,7 +23,6 @@ export default function CarouselComponent({ images }: CarouselComponentProps) {
   const [count, setCount] = useState(0);
 
   const isDesktop = useMediaQuery({ minWidth: 640 });
-  console.log(isDesktop);
 
   useEffect(() => {
     if (!api) {
@@ -37,8 +38,12 @@ export default function CarouselComponent({ images }: CarouselComponentProps) {
   }, [api]);
   return (
     <>
-      <div className='w-full mx-auto sm:w-[90vw] max-w-[700px] flex-1 md:ml-2'>
-        <Carousel setApi={setApi} className='w-full mx-auto'>
+      <div className='w-full mx-auto sm:w-[90vw] max-w-[700px] flex-1 '>
+        <Carousel setApi={setApi} plugins={[
+        Autoplay({
+          delay: 3000,
+        }),
+      ]} className='w-full mx-auto'>
           <CarouselContent className='-ml-2 md:-ml-4'>
             {images.map((image: ImageType, index: number) => {
               return (

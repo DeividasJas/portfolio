@@ -2,10 +2,14 @@ import { Link } from 'react-router-dom';
 import '../styles/header.css';
 import Sidebar from './Sidebar';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Computer } from 'lucide-react';
+import { useMediaQuery } from 'react-responsive';
 
 export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
+  const size_s_Mobile = useMediaQuery({ minWidth: 320 });
+  console.log(size_s_Mobile);
 
   return (
     <header
@@ -20,12 +24,10 @@ export default function Header() {
           location.pathname === '/' ? 'absolute md:fixed' : 'absolute'
         } bg-zinc-700 top-10 translate-y-[-50%] px-4 py-2 flex gap-2 items-center justify-center rounded-e-md cursor-pointer`}
       >
-        <img
-          src='src/assets/logo.svg'
-          alt='DJ Logo'
-          className='cursor-pointer'
-        />
+        <Computer />
+        {size_s_Mobile && 
         <p>Deividas Jasas</p>
+        }
       </Link>
       <Sidebar location={location} navigate={navigate} />
     </header>

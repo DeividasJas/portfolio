@@ -16,21 +16,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+        errorElement: <ErrorPage />,
       },
       {
         path: '/about',
         element: <AboutPage />,
+        errorElement: <ErrorPage />,
       },
       {
         path: '/projects',
         element: <ProjectsPage />,
-        // children: [
-        //   {
-        //     path:`basketball`,
-        //     element: <AboutPage/>,
-        //     errorElement: <ErrorPage/>
-        //   }
-        // ]
+        errorElement: <ErrorPage />,
       },
       {
         path: '/projects/:projectName',
