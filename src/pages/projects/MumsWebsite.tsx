@@ -11,13 +11,11 @@ export default function MumsWebsite() {
         <h3 className='m-3 text-2xl underline'>{data.title}</h3>
         <div className='md:flex '>
           <CarouselComponent images={data.images} />
-          {/* <p className='m-3'>{data.description}</p> */}
           <div className='flex flex-col flex-1 m-3 divide-y-2 divide-zinc-600 md:mx-3 md:my-0'>
             <p className='pb-2'>
              {data.description}
             </p>
             <p className='py-2'>
-              {/* Notable challenges I had to overcome: creating database with prisma. */}
               Notable challenges I had to overcome:
             </p>
             <p className='pt-2'>

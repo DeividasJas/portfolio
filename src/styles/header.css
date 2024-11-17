@@ -66,6 +66,7 @@
     height: 100vh;
     background-color: var(--accent-color-two);
     position: fixed;
+    display: none;
     top: 0;
     opacity: 0;
     padding: 100px 60px 100px 60px;
@@ -75,6 +76,7 @@
 
 .sidebar-active {
     opacity: 1;
+    /* display: block; */
 }
 
 .sidebar-content {

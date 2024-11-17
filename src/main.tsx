@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AboutPage from './pages/about/AboutPage.tsx';
 import HomePage from './pages/home/HomePage.tsx';
 import ProjectsPage from './pages/projects/ProjectsPage.tsx';
+import ProjectPage from './components/ProjectPage.tsx';
+import ErrorPage from './Error-page.tsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,18 @@ const router = createBrowserRouter([
       {
         path: '/projects',
         element: <ProjectsPage />,
+        // children: [
+        //   {
+        //     path:`basketball`,
+        //     element: <AboutPage/>,
+        //     errorElement: <ErrorPage/>
+        //   }
+        // ]
+      },
+      {
+        path: '/projects/:projectName',
+        element: <ProjectPage />,
+        errorElement: <ErrorPage />,
       },
     ],
   },

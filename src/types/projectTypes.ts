@@ -1,21 +1,25 @@
+import BasketJoinLogo from '@/assets/basketball.svg';
 export type ImageType = {
-    src: string;
-    alt: string;
-}
+  src: string;
+  alt: string;
+};
 
 export type WebsiteProjectType = {
   title: string;
-  description: string;
-  images: ImageType[];
   link: string;
   published: boolean;
+  logoSrc: string;
+  images: ImageType[];
+  description: string;
 };
 
 const websiteProjects: WebsiteProjectType[] = [
   {
     title: 'BasketJoin',
-    link: 'localhost:3000',
+    link: 'https://www.localhost:3000',
     published: true,
+    logoSrc: BasketJoinLogo,
+
     images: [
       {
         src: 'src/assets/basketball1-about-page.png',
@@ -39,8 +43,9 @@ const websiteProjects: WebsiteProjectType[] = [
   },
   {
     title: 'WanderWilnius',
-    link: 'www.wanderwilnius.lt',
+    link: 'https://www.wanderwilnius.lt',
     published: true,
+    logoSrc: '',
     images: [
       {
         src: 'src/assets/basketball1-about-page.png',
@@ -64,8 +69,9 @@ const websiteProjects: WebsiteProjectType[] = [
   },
   {
     title: 'GinteJasiene',
-    link: 'www.gintejasiene.lt',
+    link: 'https://www.gintejasiene.lt',
     published: true,
+    logoSrc: '',
     images: [
       {
         src: 'src/assets/basketball1-about-page.png',
@@ -86,7 +92,7 @@ const websiteProjects: WebsiteProjectType[] = [
     ],
     description:
       'A static landing page for a psychologist, designed to provide information about their services, approach, and contact details. The page offers a clean, professional layout to ensure visitors feel welcomed and informed.',
-  },
+  },{}
 ];
 
 export default websiteProjects;
