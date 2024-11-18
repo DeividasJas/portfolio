@@ -12,7 +12,7 @@ export default function HomePage() {
         <section id='target-2' className='bg-red-300 section h-[400px]'>
           <h1>Target-2</h1>
         </section>
-        <section id='target-3' className='section bg-zinc-500'>
+        <section id='target-3' className='section bg-zinc-500 h-[400px]'>
           <h1>Target-3</h1>
         </section>
         {/* <section id='target-4' className='section bg-lime-900'>

@@ -4,14 +4,14 @@ import { Link, useHref, useLocation } from 'react-router-dom';
 export default function Footer() {
   const location = useLocation();
   return (
-    <footer className='flex flex-col items-center justify-center px-8 h-44 md:w-full md:px-12 text-zinc-400'>
+    <footer className='flex flex-col items-center justify-center px-8 mt-6 md:w-full md:px-12 text-zinc-400'>
       <section
         id='target-4'
         className={` ${
           location.pathname === '/' ? 'section' : ''
         } flex flex-col gap-4 md:gap-8 w-full`}
       >
-        <div className='flex items-center justify-around w-full pt-2 border-t'>
+        <div className='flex items-center justify-around w-full pt-6 border-t'>
           <div>
             <p className='flex items-center gap-2'>
               SAY HELLO <MailOpen size={25}/>
