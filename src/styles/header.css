@@ -66,17 +66,19 @@
     height: 100vh;
     background-color: var(--accent-color-two);
     position: fixed;
-    /* display: none; */
     top: 0;
     opacity: 0;
     padding: 100px 60px 100px 60px;
     transition: opacity var(--animation-timing), transform var(--animation-timing);
     z-index: 2;
+    pointer-events: none;
+    visibility: hidden;
 }
 
 .sidebar-active {
     opacity: 1;
-    /* display: block; */
+    pointer-events: auto;
+    visibility: visible;
 }
 
 .sidebar-content {
