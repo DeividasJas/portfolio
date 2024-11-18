@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { navbarLinks, navbarSocials } from '../types/navbarLinkTypes';
 import { handleResizeTransition } from '../utils/ResizeTransitionHandler';
 import { handleClickOutside } from '../utils/closeSidebar';
+import { MailOpen } from 'lucide-react';
 
 export default function Sidebar() {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -32,7 +33,7 @@ export default function Sidebar() {
   return (
     <>
       <button
-        className={`nav-button  ${clicked && 'nav-btn-active'}`}
+        className={`nav-button ${clicked && 'nav-btn-active'}`}
         onClick={handleButtonClick}
         ref={buttonRef}
       />
@@ -53,7 +54,9 @@ export default function Sidebar() {
             ))}
           </ul>
           <div className='relative flex flex-col items-start justify-start w-full gap-2'>
-            <p>SAY HELLO 📩</p>
+          <p className='flex items-center gap-2'>
+              SAY HELLO <MailOpen size={20} strokeWidth={2}/>
+            </p>
             <a
               href='mailto:jasas.code@gmail.com'
               className='mail-hover'

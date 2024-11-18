@@ -12,7 +12,7 @@
 
 .nav-button {
     box-sizing: border-box;
-    position: absolute;
+    position: fixed;
     width: var(--toggle-line-width);
     height: var(--nav-btn-height);
     z-index: 2;
@@ -66,7 +66,7 @@
     height: 100vh;
     background-color: var(--accent-color-two);
     position: fixed;
-    display: none;
+    /* display: none; */
     top: 0;
     opacity: 0;
     padding: 100px 60px 100px 60px;
@@ -100,6 +100,8 @@
     position: relative;
     z-index: 2;
 }
+
+
 
 .sidebar-content ul li::before,
 .mail-hover::before {

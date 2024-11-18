@@ -19,7 +19,7 @@ export default function ProjectCard({
           className='w-20'
         />
       </Link>
-      <div className='flex flex-col justify-center w-full gap-1 pl-8 overflow-hidden rounded-b-sm bg-zinc-700 h-2/6'>
+      <div className='flex flex-col justify-center w-full pl-8 overflow-hidden rounded-b-sm gap-1 bg-zinc-700 h-2/6'>
         <p>{project.title}</p>
         {project.published && (
           <a
