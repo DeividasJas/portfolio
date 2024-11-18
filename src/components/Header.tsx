@@ -21,7 +21,7 @@ export default function Header() {
         to='/'
         className={`${
           location.pathname === '/' ? 'fixed' : 'absolute'
-        } bg-zinc-700 top-10 translate-y-[-50%] px-4 py-2 flex gap-2 items-center justify-center rounded-e-md cursor-pointer`}
+        } bg-zinc-700 top-[45px] translate-y-[-50%] px-4 py-2 flex gap-2 items-center justify-center rounded-e-md cursor-pointer`}
       >
         <Computer />
         {size_s_Mobile && 
