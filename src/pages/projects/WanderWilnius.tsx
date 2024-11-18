@@ -37,4 +37,3 @@ export default function WanderWilnius() {
     </section>
   );
 }
-x

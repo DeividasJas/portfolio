@@ -5,10 +5,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { ImageType } from '@/types/projectTypes';
 
-import { WebsiteProjectType, Image } from '@/types/projectTypes';
+import { WebsiteProjectType } from '@/types/projectTypes';
 
-export default function SingleProjectCard({ project }: WebsiteProjectType) {
+export default function SingleProjectCard(project: WebsiteProjectType) {
   console.log(project);
 
   return (
@@ -17,7 +18,7 @@ export default function SingleProjectCard({ project }: WebsiteProjectType) {
         <h3>{project.title}</h3>
         <Carousel className='w-2/3 mx-auto'>
           <CarouselContent>
-            {project.images.map((image: Image , index: number) => {
+            {project.images.map((image: ImageType, index: number) => {
               return (
                 <CarouselItem key={index}>
                   <img src={image.src} alt={image.alt} />

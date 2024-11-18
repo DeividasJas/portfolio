@@ -1,10 +1,5 @@
-import SingleProjectCard from '@/components/SingleProjectCard';
 import websiteProjects from '@/types/projectTypes';
-import BasketJoin from './BasketJoin';
-import WanderWilnius from './WanderWilnius';
-import MumsWebsite from './MumsWebsite';
 import ProjectCard from '@/components/ProjectCard';
-import { Link, Outlet } from 'react-router-dom';
 export default function ProjectsPage() {
   console.log(websiteProjects.length);
   

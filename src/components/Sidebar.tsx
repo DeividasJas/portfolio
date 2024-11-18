@@ -18,7 +18,7 @@ export default function Sidebar() {
   // const { clicked, sidebarRef, buttonRef, handleButtonClick } = useCloseSideBar();
 
   useEffect(() => {
-    const closeSideBar = (event) => {
+    const closeSideBar = (event:MouseEvent) => {
       handleClickOutside(event, sidebarRef, buttonRef, clicked, setClicked);
     };
 

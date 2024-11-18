@@ -1,6 +1,6 @@
 import { navbarLinks } from '@/types/navbarLinkTypes';
 import { Github, Linkedin, MailOpen } from 'lucide-react';
-import { Link, useHref, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 export default function Footer() {
   const location = useLocation();
   return (

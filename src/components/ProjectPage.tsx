@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import websiteProjects from '@/types/projectTypes';
 import { WebsiteProjectType } from '@/types/projectTypes';
 import CarouselComponent from './CarouselComponent';
-import { Car } from 'lucide-react';
 export default function ProjectPage() {
   const { projectName } = useParams();
   

@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import '../styles/header.css';
 import Sidebar from './Sidebar';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Computer } from 'lucide-react';
 import { useMediaQuery } from 'react-responsive';
 
 export default function Header() {
   const location = useLocation();
-  const navigate = useNavigate();
   const size_s_Mobile = useMediaQuery({ minWidth: 320 });
   console.log(size_s_Mobile);
 
@@ -29,7 +28,7 @@ export default function Header() {
         <p>Deividas Jasas</p>
         }
       </Link>
-      <Sidebar location={location} navigate={navigate} />
+      <Sidebar />
     </header>
   );
 }
