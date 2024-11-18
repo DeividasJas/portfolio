@@ -16,7 +16,7 @@
     width: var(--toggle-line-width);
     height: var(--nav-btn-height);
     z-index: 2;
-    top: 35px;
+    top: 45px;
     right: 75px;
     z-index: 3;
 }
@@ -173,6 +173,16 @@
         opacity: 1;
         bottom: 0;
         padding: 20px 40px;
-
     }
+
+    .sidebar-landscape-large {
+        height: 90vh;
+    }
+
+    .sidebar-content-landscape-large {
+        gap: 40px;
+    }
+
+
+
 }

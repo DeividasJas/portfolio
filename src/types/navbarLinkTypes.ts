@@ -13,8 +13,8 @@ export const navbarLinks: NavbarLinks[] = [
     path: '/about',
   },
   {
-    title: 'Projects',
-    path: '/projects',
+    title: 'Work',
+    path: '/work',
   },
 ];
 

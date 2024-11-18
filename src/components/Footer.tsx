@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 export default function Footer() {
   const location = useLocation();
   return (
-    <footer className='flex flex-col items-center justify-center px-8 mt-6 md:w-full md:px-12 text-zinc-400'>
+    <footer className='flex flex-col items-center justify-center px-8 my-6 md:w-full md:px-12 text-zinc-400'>
       <section
         id='target-4'
         className={` ${
@@ -37,10 +37,10 @@ export default function Footer() {
               href='https://www.linkedin.com/in/deividasjasas/'
               target='_blank'
             >
-              <Linkedin size={30} strokeWidth={1} className='transition hover:scale-110'/>
+              <Linkedin size={30} strokeWidth={1} className='transition hover:scale-110' aria-label='Linkedin'/>
             </a>
             <a href='https://github.com/DeividasJas' target='_blank'>
-              <Github size={30} strokeWidth={1}  className='transition hover:scale-110'/>
+              <Github size={30} strokeWidth={1}  className='transition hover:scale-110' aria-label='Github'/>
             </a>
           </div>
         </div>

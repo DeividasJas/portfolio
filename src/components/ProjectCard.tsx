@@ -10,7 +10,7 @@ export default function ProjectCard({
   return (
     <li className='flex flex-col items-center justify-between h-64 mx-12 transition hover:scale-105  w-full max-w-[400px] min-w-0'>
       <Link
-        to={`/projects/${project.title}`}
+        to={`/work/${project.title}`}
         className='flex items-center justify-center w-full rounded-t-sm h-4/6 bg-zinc-800'
       >
         <img
@@ -19,7 +19,7 @@ export default function ProjectCard({
           className='w-20'
         />
       </Link>
-      <div className='flex flex-col justify-center w-full pl-8 overflow-hidden rounded-b-sm gap-1 bg-zinc-700 h-2/6'>
+      <div className='flex flex-col justify-center w-full gap-1 pl-8 overflow-hidden rounded-b-sm bg-zinc-600 h-2/6'>
         <p>{project.title}</p>
         {project.published && (
           <a

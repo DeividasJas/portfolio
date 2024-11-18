@@ -8,7 +8,6 @@ import {
   CarouselPrevious,
 } from './ui/carousel';
 import { type CarouselApi } from '@/components/ui/carousel';
-
 import { ImageType } from '@/types/projectTypes';
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';

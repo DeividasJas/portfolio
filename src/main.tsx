@@ -24,12 +24,12 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: '/projects',
+        path: '/work',
         element: <ProjectsPage />,
         errorElement: <ErrorPage />,
       },
       {
-        path: '/projects/:projectName',
+        path: '/work/:projectName',
         element: <ProjectPage />,
         errorElement: <ErrorPage />,
       },
