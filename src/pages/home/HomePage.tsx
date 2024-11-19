@@ -36,7 +36,6 @@ export default function HomePage() {
           stroke-width='2'
           stroke-linecap='round'
           stroke-linejoin='round'
-          class='lucide lucide-square-user-round'
           className='animate-spin'
         >
           <path d='M18 21a6 6 0 0 0-12 0' />
