@@ -12,8 +12,14 @@ export default function Sidebar() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const body = document.body;
   const isLandscape = useMediaQuery({ query: '(orientation: landscape)' });
-  const isLargeLandscape = useMediaQuery({ minWidth: 768 });
-  console.log(isLandscape);
+  // const isLargeLandscape = useMediaQuery({ minWidth: 768 }) && isLandscape;
+  const isLargeLandscape = useMediaQuery({
+    query: '(min-width: 768px) and (orientation: landscape)',
+  });
+  
+  console.log('is landscape',isLandscape);
+  console.log('is large landscape',isLargeLandscape);
+  
   
 
   const handleButtonClick = () => {
@@ -48,11 +54,11 @@ export default function Sidebar() {
         ref={buttonRef}
       />
       <nav
-        className={`sidebar text-zinc-800 ${clicked && 'sidebar-active'} ${isLargeLandscape && isLandscape && 'sidebar-landscape-large'}`}
+        className={`sidebar text-zinc-800 ${clicked && 'sidebar-active'} ${isLargeLandscape && 'sidebar-landscape-large'}`}
         ref={sidebarRef}
       >
         <div
-          className={`sidebar-content ${clicked && 'sidebar-content-active'} ${isLargeLandscape && isLandscape && 'sidebar-content-landscape-large'}`}
+          className={`sidebar-content ${clicked && 'sidebar-content-active'} ${isLargeLandscape && 'sidebar-content-landscape-large'}`}
         >
           <ul className={`flex items-start justify-start w-full gap-2 ${isLandscape ? 'flex-row gap-4' : 'flex-col'}`}>
             {navbarLinks.map((link) => (

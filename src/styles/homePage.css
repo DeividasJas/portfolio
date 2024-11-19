@@ -62,3 +62,7 @@
     background-color: yellowgreen;
     border-radius: 15px;
   } */
+
+  h1 {
+    z-index: 20;
+  }

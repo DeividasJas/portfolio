@@ -8,7 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 export default function Header() {
   const location = useLocation();
   const size_s_Mobile = useMediaQuery({ minWidth: 412 });
-  console.log(size_s_Mobile);
+  // console.log(size_s_Mobile);
 
   return (
     <header

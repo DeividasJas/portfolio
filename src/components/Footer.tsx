@@ -14,7 +14,7 @@ export default function Footer() {
         <div className='flex items-center justify-around w-full pt-6 border-t'>
           <div>
             <p className='flex items-center gap-2'>
-              SAY HELLO <MailOpen size={25}/>
+              SAY HELLO <MailOpen size={20}/>
             </p>
             <a href='mailto:jasas.code@gmail.com' className='transition hover:scale-105'>
               jasas.code@gmail.com

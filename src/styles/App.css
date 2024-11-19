@@ -1,0 +1,12 @@
+/* Add to your homePage.css */
+.pixel-cell {
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+  
+  /* Optional: Add this if you want smoother animations */
+  * {
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
