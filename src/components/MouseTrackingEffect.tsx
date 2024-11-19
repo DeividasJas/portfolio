@@ -1,13 +1,13 @@
 import { useSpring, animated } from '@react-spring/web';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function MouseTrackingEffect() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  // const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [props1, api1] = useSpring(() => ({ x: 0, y: 0 }));
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    const handleMouseMove = (e: MouseEvent) => {
+      // setMousePosition({ x: e.clientX, y: e.clientY });
       
       // Primary tracker
       api1.start({
@@ -25,20 +25,20 @@ export default function MouseTrackingEffect() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [api1]);
 
-  const createPixelStyle = (x, y) => {
-    const distanceFromMouse = Math.sqrt(
-      Math.pow((x - mousePosition.x), 2) + 
-      Math.pow((y - mousePosition.y), 2)
-    );
+  // const createPixelStyle = (x, y) => {
+  //   const distanceFromMouse = Math.sqrt(
+  //     Math.pow((x - mousePosition.x), 2) + 
+  //     Math.pow((y - mousePosition.y), 2)
+  //   );
     
-    const maxDistance = 200; // Increased radius to match your larger cursor
-    const scale = Math.max(0, 1 - distanceFromMouse / maxDistance);
+  //   const maxDistance = 200; // Increased radius to match your larger cursor
+  //   const scale = Math.max(0, 1 - distanceFromMouse / maxDistance);
     
-    return {
-      transform: `scale(${scale})`,
-      opacity: scale * 0.7  // Reduced opacity to match your style
-    };
-  };
+  //   return {
+  //     transform: `scale(${scale})`,
+  //     opacity: scale * 0.7  // Reduced opacity to match your style
+  //   };
+  // };
 
   return (
     <>
