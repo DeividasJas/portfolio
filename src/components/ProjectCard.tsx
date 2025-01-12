@@ -28,7 +28,9 @@ export default function ProjectCard({
             target='_blank'
             className='break-words hover:text-blue-500'
           >
-            {project.link.split('https://www.')[1]}
+            {project.link.includes('https://www.')
+              ? project.link.split('https://www.')[1]
+              : project.link.split('https://')[1]}
           </a>
         )}
       </div>

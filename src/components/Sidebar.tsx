@@ -17,8 +17,8 @@ export default function Sidebar() {
     query: '(min-width: 768px) and (orientation: landscape)',
   });
   
-  console.log('is landscape',isLandscape);
-  console.log('is large landscape',isLargeLandscape);
+  // console.log('is landscape',isLandscape);
+  // console.log('is large landscape',isLargeLandscape);
   
   
 

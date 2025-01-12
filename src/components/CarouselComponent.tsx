@@ -1,4 +1,4 @@
-import Autoplay from "embla-carousel-autoplay"
+import Autoplay from 'embla-carousel-autoplay';
 
 import {
   Carousel,
@@ -38,16 +38,25 @@ export default function CarouselComponent({ images }: CarouselComponentProps) {
   return (
     <>
       <div className='w-full mx-auto sm:w-[90vw] max-w-[700px] flex-1 '>
-        <Carousel setApi={setApi} plugins={[
-        Autoplay({
-          delay: 3000,
-        }),
-      ]} className='w-full mx-auto'>
+        <Carousel
+          setApi={setApi}
+          plugins={[
+            Autoplay({
+              delay: 3000,
+            }),
+          ]}
+          className='w-full mx-auto'
+        >
           <CarouselContent className='-ml-2 md:-ml-4'>
             {images.map((image: ImageType, index: number) => {
               return (
                 <CarouselItem key={index} className='pl-2 md:pl-4'>
-                  <img src={image.src} alt={image.alt} className='rounded' />
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className='rounded'
+                    loading='lazy'
+                  />
                 </CarouselItem>
               );
             })}

@@ -1,4 +1,5 @@
 import basketballAssets from '@/assets/basketjoin/basketjoin';
+import wanderVilniusAssets from '@/assets/wondervilnius/wandervilnius';
 export type ImageType = {
   src: string;
   alt: string;
@@ -16,7 +17,8 @@ export type WebsiteProjectType = {
 const websiteProjects: WebsiteProjectType[] = [
   {
     title: 'BasketJoin',
-    link: 'https://www.localhost:3000',
+    // link: 'https://www.localhost:3000',
+    link: 'https://basket-join.vercel.app',
     published: true,
     logoSrc: basketballAssets.logo,
 
@@ -31,68 +33,76 @@ const websiteProjects: WebsiteProjectType[] = [
       },
       {
         src: basketballAssets.basketball3,
-        alt: 'BasketJoin Signup Page',
+        alt: 'BasketJoin Login Page',
       },
       {
         src: basketballAssets.basketball4,
         alt: 'BasketJoin Player Status Page',
       },
-    ],
-    description:
-      'A basketball registration page built with Next.js and Tailwind CSS, featuring user authentication powered by Kinde. Users can create accounts and register for basketball games. The platform helps track whether enough players have signed up to play on Tuesday evenings or other selected days.',
-  },
-  {
-    title: 'WanderWilnius',
-    link: 'https://www.wanderwilnius.lt',
-    published: true,
-    logoSrc: '',
-    images: [
       {
-        src: 'src/assets/basketball1-about-page.png',
-        alt: 'BasketJoin About Page',
+        src: basketballAssets.basketball5,
+        alt: 'BasketJoin Profile Dashboard',
       },
       {
-        src: 'src/assets/basketball2-schedule-page.png',
-        alt: 'BasketJoin Schedule Page',
-      },
-      {
-        src: 'src/assets/basketball3-signup-page.png',
-        alt: 'BasketJoin Signup Page',
-      },
-      {
-        src: 'src/assets/basketball4-player-status-page.png',
+        src: basketballAssets.basketball6,
         alt: 'BasketJoin Player Status Page',
       },
     ],
     description:
-      'A basketball registration page built with Next.js and Tailwind CSS, featuring user authentication powered by Kinde. Users can create accounts and register for basketball games. The platform helps track whether enough players have signed up to play on Tuesday evenings or other selected days.',
+      'A basketball registration app built with Next.js and Tailwind CSS, featuring user authentication powered by Kinde. Users can create accounts and register for basketball games. The platform helps track whether enough players have signed up to play on Tuesday evenings or other selected days.',
   },
   {
-    title: 'GinteJasiene',
-    link: 'https://www.gintejasiene.lt',
+    title: 'WanderVilnius',
+    link: 'https://www.wandervilnius.lt',
     published: true,
-    logoSrc: '',
+    logoSrc: wanderVilniusAssets.logo,
     images: [
       {
         src: 'src/assets/basketball1-about-page.png',
-        alt: 'BasketJoin About Page',
+        alt: 'WanderVilnius About Page',
       },
       {
         src: 'src/assets/basketball2-schedule-page.png',
-        alt: 'BasketJoin Schedule Page',
+        alt: 'WanderVilnius Schedule Page',
       },
       {
         src: 'src/assets/basketball3-signup-page.png',
-        alt: 'BasketJoin Signup Page',
+        alt: 'WanderVilnius Signup Page',
       },
       {
         src: 'src/assets/basketball4-player-status-page.png',
-        alt: 'BasketJoin Player Status Page',
+        alt: 'WanderVilnius Tours Page',
       },
     ],
     description:
-      'A static landing page for a psychologist, designed to provide information about their services, approach, and contact details. The page offers a clean, professional layout to ensure visitors feel welcomed and informed.',
+      'WanderVilnius is your ultimate guide to exploring the heart of Lithuania’s capital. Whether you’re a first-time visitor or a local looking to rediscover hidden gems, our city tours offer a unique and immersive experience. Discover Vilnius’ rich history, vibrant culture, and stunning architecture, from the medieval Old Town to modern-day landmarks. With expert guides and customizable itineraries, WanderVilnius makes it easy to explore the city’s most iconic sites, charming neighborhoods, and local hotspots. Embark on a journey through time and beauty with WanderVilnius.',
   },
+  // {
+  //   title: 'GinteJasiene',
+  //   link: 'https://www.gintejasiene.lt',
+  //   published: true,
+  //   logoSrc: '',
+  //   images: [
+  //     {
+  //       src: 'src/assets/basketball1-about-page.png',
+  //       alt: 'BasketJoin About Page',
+  //     },
+  //     {
+  //       src: 'src/assets/basketball2-schedule-page.png',
+  //       alt: 'BasketJoin Schedule Page',
+  //     },
+  //     {
+  //       src: 'src/assets/basketball3-signup-page.png',
+  //       alt: 'BasketJoin Signup Page',
+  //     },
+  //     {
+  //       src: 'src/assets/basketball4-player-status-page.png',
+  //       alt: 'BasketJoin Player Status Page',
+  //     },
+  //   ],
+  //   description:
+  //     'A static landing page for a psychologist, designed to provide information about their services, approach, and contact details. The page offers a clean, professional layout to ensure visitors feel welcomed and informed.',
+  // },
 ];
 
 export default websiteProjects;
