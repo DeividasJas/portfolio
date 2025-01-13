@@ -40,7 +40,7 @@ export function StackCarousel() {
       gradientWidth={100}
       speed={60}
       autoFill={true}
-      className='z-0'
+      className='z-0 w-full md:max-w-[850px] mx-auto'
     >
       {logos.map((logo, index) => (
         <div
