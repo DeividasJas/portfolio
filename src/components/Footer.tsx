@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 export default function Footer() {
   const location = useLocation();
   return (
-    <footer className={`flex flex-col items-center justify-center px-8 pb-4 md:w-full md:px-12 text-zinc-400 ${location.pathname === "/" && "bg-[#0c0c0f]"}`}>
+    <footer className={`flex flex-col items-center justify-center px-8 pb-4 md:w-full md:px-12 text-zinc-400 bg-inherit ${location.pathname === "/" && "bg-[#0c0c0f]"}`}>
       <section
         id="target-3"
         className={`${location.pathname === "/" && "section"} flex flex-col gap-4 md:gap-8 w-full`}
