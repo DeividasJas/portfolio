@@ -3,7 +3,7 @@ export const handleClickOutside = (
   sidebarRef: React.RefObject<HTMLElement>,
   buttonRef: React.RefObject<HTMLElement>,
   clicked: boolean,
-  setClicked: React.Dispatch<React.SetStateAction<boolean>>
+  setClicked: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
   if (
     sidebarRef.current &&
@@ -11,20 +11,20 @@ export const handleClickOutside = (
     buttonRef.current &&
     !buttonRef.current.contains(event.target as any)
   ) {
-    setClicked(false); // Close sidebar if clicking outside
+    setClicked(false);
   }
   if (
     buttonRef.current &&
     buttonRef.current.contains(event.target as any) &&
     clicked
   ) {
-    setClicked(false); // Close sidebar if clicking the button again while open
+    setClicked(false);
   }
   if (
     buttonRef.current &&
     buttonRef.current.contains(event.target as any) &&
     clicked
   ) {
-    setClicked(true); // Open sidebar if clicking the button while closed
+    setClicked(true);
   }
 };

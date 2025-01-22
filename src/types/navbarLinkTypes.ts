@@ -5,16 +5,16 @@ type NavbarLinks = {
 
 export const navbarLinks: NavbarLinks[] = [
   {
-    title: 'Home',
-    path: '/',
+    title: "Home",
+    path: "/",
   },
   {
-    title: 'About',
-    path: '/about',
+    title: "About",
+    path: "/about",
   },
   {
-    title: 'Work',
-    path: '/work',
+    title: "Work",
+    path: "/work",
   },
 ];
 
@@ -25,11 +25,11 @@ type NavbarSocials = {
 
 export const navbarSocials: NavbarSocials[] = [
   {
-    title: 'LinkedIn',
-    path: 'https://www.linkedin.com/in/deividasjasas/',
+    title: "LinkedIn",
+    path: "https://www.linkedin.com/in/deividasjasas/",
   },
   {
-    title: 'GitHub',
-    path: 'https://github.com/DeividasJas',
+    title: "GitHub",
+    path: "https://github.com/DeividasJas",
   },
 ];

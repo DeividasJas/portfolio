@@ -18,11 +18,11 @@ export default tseslint.config({
   languageOptions: {
     // other options...
     parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
       tsconfigRootDir: import.meta.dirname,
     },
   },
-})
+});
 ```
 
 - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
@@ -31,11 +31,11 @@ export default tseslint.config({
 
 ```js
 // eslint.config.js
-import react from 'eslint-plugin-react'
+import react from "eslint-plugin-react";
 
 export default tseslint.config({
   // Set the react version
-  settings: { react: { version: '18.3' } },
+  settings: { react: { version: "18.3" } },
   plugins: {
     // Add the react plugin
     react,
@@ -44,34 +44,28 @@ export default tseslint.config({
     // other rules...
     // Enable its recommended rules
     ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
+    ...react.configs["jsx-runtime"].rules,
   },
-})
+});
 ```
-
-
 
 1. For this project I will be using mostly tailwinds ZINC color pallet from tailwind
 2.
 
-
 PROJECT LIST:
-  1. basketball registration
-      summary: A basketball registration page where anyone can create an account and register for basketball games. The platform is designed to track whether enough players have signed up to play basketball on Tuesday evenings or another selected day.
-      
-      OR
-      
-      A basketball registration page built with Next.js and Tailwind CSS, featuring user authentication powered by Kinde. Users can create accounts and register for basketball games. The platform helps track whether enough players have signed up to play on Tuesday evenings or other selected days.
 
-  2. Mums website
-  3. Product landing page
-  4. Wander Vilnius
+1. basketball registration
+   summary: A basketball registration page where anyone can create an account and register for basketball games. The platform is designed to track whether enough players have signed up to play basketball on Tuesday evenings or another selected day.
 
-  One section should include the following:
-    1. screenshot
-    2. title
-    3. summary, a 2-3 sentence description of the project, covering:
-      What the project is.
-      The technologies you used.
-      A notable feature or challenge you overcame.
-    4. Link to deployed website
+   OR
+
+   A basketball registration page built with Next.js and Tailwind CSS, featuring user authentication powered by Kinde. Users can create accounts and register for basketball games. The platform helps track whether enough players have signed up to play on Tuesday evenings or other selected days.
+
+2. Mums website
+3. Product landing page
+4. Wander Vilnius
+
+One section should include the following: 1. screenshot 2. title 3. summary, a 2-3 sentence description of the project, covering:
+What the project is.
+The technologies you used.
+A notable feature or challenge you overcame. 4. Link to deployed website

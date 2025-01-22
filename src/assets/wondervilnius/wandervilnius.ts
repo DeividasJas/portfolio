@@ -1,4 +1,4 @@
-import wanderVilnius from './wandervilnius.svg';
+import wanderVilnius from "./wandervilnius.svg";
 
 const wanderVilniusAssets = {
   logo: wanderVilnius,

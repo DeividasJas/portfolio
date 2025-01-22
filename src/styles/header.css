@@ -8,47 +8,79 @@
     --animation-timing: 200ms ease-in-out;
     --animation-timing-slow: 600ms ease-in-out;
     --x-width: calc((var(--nav-btn-height) * 1.41421356237));
+    --sidebar-right-margin: 5vw;
+}
+
+
+.nav-button-wrapper {
+    display: flex;
+    position: fixed;
+    top: 45px;
+    right: calc(var(--sidebar-right-margin) + 10px);
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+    opacity: 0.7;
+    z-index: 3;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+    width: calc(var(--toggle-line-width) + 10px);
+    height: calc(var(--nav-btn-height) + 15px);
+}
+
+.nav-button-wrapper-active {
+    display: flex;
+    position: fixed;
+    top: 45px;
+    right: 5vw;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    background: inherit;
+    width: calc(var(--toggle-line-width) + 10px);
+    height: calc(var(--nav-btn-height) + 10px);
 }
 
 .nav-button {
+    z-index: 4;
+    position: relative;
     box-sizing: border-box;
-    position: fixed;
     width: var(--toggle-line-width);
     height: var(--nav-btn-height);
-    z-index: 2;
-    top: 45px;
-    right: 75px;
-    z-index: 3;
 }
 
 .nav-button,
 .nav-button::after,
 .nav-button::before {
-    transition: opacity var(--animation-timing), width var(--animation-timing),
-        rotate var(--animation-timing), background-color var(--animation-timing),
+    transition:
+        opacity var(--animation-timing),
+        width var(--animation-timing),
+        rotate var(--animation-timing),
+        background-color var(--animation-timing),
         translate var(--animation-timing);
 }
 
 .nav-button::after,
 .nav-button::before {
-    content: '';
-    position: absolute;
     display: block;
-    background-color: var(--accent-color);
-    height: var(--toggle-line-height);
-    width: var(--toggle-line-width);
-    border-radius: 5px;
+    position: absolute;
     transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    width: var(--toggle-line-width);
+    height: var(--toggle-line-height);
+    content: "";
 }
 
 .nav-button::after {
-    left: 0;
     top: 0;
+    left: 0;
 }
 
 .nav-button::before {
-    left: 0;
     bottom: 0;
+    left: 0;
 }
 
 .nav-btn-active::after {
@@ -58,27 +90,29 @@
 
 .nav-btn-active::before {
     transform: rotate(45deg) translate(-2px, -10px);
-    width: var(--x-width);
+    width: var(--x-width)
 }
 
 .sidebar {
-    width: 100%;
-    height: 100vh;
-    background-color: var(--accent-color-two);
     position: fixed;
     top: 0;
-    opacity: 0;
-    padding: 100px 60px 100px 60px;
-    transition: opacity var(--animation-timing), transform var(--animation-timing);
-    z-index: 2;
-    pointer-events: none;
     visibility: hidden;
+    opacity: 0;
+    z-index: 2;
+    transition:
+        opacity var(--animation-timing),
+        transform var(--animation-timing);
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+    padding: 100px 60px 100px 60px;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
 }
 
 .sidebar-active {
+    visibility: visible;
     opacity: 1;
     pointer-events: auto;
-    visibility: visible;
 }
 
 .sidebar-content {
@@ -87,11 +121,10 @@
     justify-content: center;
     align-items: center;
     gap: 80px;
-    font-size: 20px;
-    height: 100%;
     width: 100%;
+    height: 100%;
+    font-size: 20px;
 }
-
 
 .sidebar-content ul li {
     position: relative;
@@ -103,75 +136,73 @@
     z-index: 2;
 }
 
-
-
 .sidebar-content ul li::before,
 .mail-hover::before {
-    content: '';
-    width: 20px;
-    height: 30px;
     display: inline-block;
     position: absolute;
-    transform: translateY(-50%);
     top: 50%;
     right: 8px;
+    transform: translateY(-50%);
     opacity: 0;
-    background: var(--accent-color-three);
     z-index: 1;
-    /* Ensure the pseudo-element is behind the link content */
-    transition: opacity var(--animation-timing), right var(--animation-timing);
+    transition:
+        opacity var(--animation-timing),
+        right var(--animation-timing);
+    background: var(--accent-color-three);
+    width: 20px;
+    height: 30px;
+    content: "";
 }
 
-/* ::before pseudo-element for the <a> tag */
+
 .mail-hover::before {
     z-index: -1;
-    /* Ensure it appears behind the text */
 }
 
 .sidebar-content ul li:hover::before,
 .mail-hover:hover::before {
-    opacity: 1;
     right: -8px;
+    opacity: 1;
 }
-
-
-
-
 
 @media screen and (min-width: 768px) {
     .sidebar {
         position: fixed;
-        /* background-color: red; */
+        top: 20px;
+        right: var(--sidebar-right-margin);
+        visibility: hidden;
+        transition:
+            opacity var(--animation-timing),
+            transform var(--animation-timing),
+            width var(--animation-timing),
+            height var(--animation-timing);
+        padding: 0;
         width: 0px;
         height: 0px;
-        right: 50px;
-        top: 25px;
-        padding: 0;
-        visibility: hidden;
-        transition: opacity var(--animation-timing), transform var(--animation-timing),
-            width var(--animation-timing), height var(--animation-timing);
         overflow: hidden;
     }
 
     .sidebar-active {
+        visibility: visible;
+        border-radius: 5px;
         width: 300px;
         height: 500px;
-        visibility: visible;
         overflow: hidden;
-        border-radius: 5px;
     }
 
     .sidebar-content {
-        opacity: 0;
         position: absolute;
         bottom: -310px;
-        transition: top var(--animation-timing-slow), bottom var(--animation-timing-slow),
+        opacity: 0;
+        transition:
+            top var(--animation-timing-slow),
+            bottom var(--animation-timing-slow),
             opacity var(--animation-timing-slow);
     }
 
     .sidebar-content-active {
-        opacity: 1;
         bottom: 0;
+        opacity: 1;
         padding: 20px 40px;
     }
 
@@ -184,6 +215,8 @@
         gap: 40px;
     }
 
-
+    .nav-button-wrapper-active {
+        right: calc(var(--sidebar-right-margin) + 10px);
+    }
 
 }

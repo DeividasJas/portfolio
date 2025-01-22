@@ -1,11 +1,10 @@
-import basketballLogo from './basketjoin.svg'
-import basketball1 from './basketball1-about-page.png'
-import basketball2 from './basketball2-schedule-page.png'
-import basketball3 from './basketball3-login-page.png'
-import basketball4 from './basketball4-player-status-page.png'
-import basketball5 from './basketball5-profile-dashboard.png'
-import basketball6 from './basketball6-profile-settings.png'
-
+import basketballLogo from "./basketjoin.svg";
+import basketball1 from "./basketball1-about-page.png";
+import basketball2 from "./basketball2-schedule-page.png";
+import basketball3 from "./basketball3-login-page.png";
+import basketball4 from "./basketball4-player-status-page.png";
+import basketball5 from "./basketball5-profile-dashboard.png";
+import basketball6 from "./basketball6-profile-settings.png";
 
 const basketballAssets = {
   logo: basketballLogo,
@@ -17,4 +16,4 @@ const basketballAssets = {
   basketball6: basketball6,
 } as const;
 
-export default basketballAssets
+export default basketballAssets;

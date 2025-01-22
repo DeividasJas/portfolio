@@ -1,45 +1,18 @@
 .nav-bullet-inactive {
-    display: block;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #a1a1aa;
-    transition: all 0.5s ease-in-out;
-    position: relative;
-    background-repeat: no-repeat;
+  display: block;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+  border: 2px solid #a1a1aa;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+
+
+}
+.nav-bullet-inactive:hover{
+  border: 2px solid #3b82f6;
 }
 
 .nav-active {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-
-
-
-/* svg version below ⬇️ */
-/* .nav-bullet-inactive {
-    display: block;
-    width: 30px;
-    height: 30px;
-    transition: all 0.5s ease-in-out;
-    position: relative;
-    background-repeat: no-repeat;
-    background-image: url(../assets/radio_button_unchecked_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg);
-    
-    
-}
-
-.nav-active {
-    background-repeat: no-repeat;
-    background-image: url(../assets/radio_button_checked_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg);
-} */
-
-
-
-
-/* .nav-active::before{
-    content: "⚪️";
-    content-size: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-} */

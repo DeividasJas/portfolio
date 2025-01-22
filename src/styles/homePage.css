@@ -3,66 +3,35 @@
   flex-direction: column;
 }
 
+
 @media screen and (min-width: 768px) {
   .snap-scroll-container {
     height: 100vh;
-    scroll-snap-type: y mandatory;
     overflow-y: scroll;
-    scroll-behavior: smooth; /* Smooth scrolling for all interactions */
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
   }
 
   .section {
-    height: 100vh; /* Each section fills the viewport height */
-    scroll-snap-align: start; /* Snap each section to the top */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    scroll-snap-align: start;
     font-size: 1.3rem;
   }
 
-  /* Optional: Hide scrollbars for a cleaner look */
   .container::-webkit-scrollbar {
     display: none;
   }
-}
 
-.active-scroll-spy {
-  background-color: yellowgreen;
-  border-radius: 15px;
-}
-
-/* @media screen and (min-width: 768px) {
-    .snap-scroll-container {
-        height: auto;
-        scroll-snap-type: y mandatory;
-        overflow-y: scroll;
-        scroll-behavior: smooth;
-
-        min-width: 100% ;
-
-    }
-  
-    .section {
-        height: 1000px; 
-        scroll-snap-align: start;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem;
-    }
-  
-    
-    .snap-scroll-container::-webkit-scrollbar {
-        display: none;
-    }
-  } */
-
-/* .active-scroll-spy {
-    background-color: yellowgreen;
-    border-radius: 15px;
-  } */
-
-  h1 {
-    z-index: 20;
+  #target-1 {
+    background: linear-gradient(180deg, #0c0c0f 0%, #18181b 50%, #1d1d21 100%);
   }
+
+  #target-2 {
+    background: linear-gradient(180deg, #1d1d21 0%, #18181b 50%, #0c0c0f 100%);
+  }
+
+}

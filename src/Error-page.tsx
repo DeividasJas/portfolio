@@ -2,11 +2,13 @@ import { useRouteError } from "react-router-dom";
 
 export default function ErrorPage() {
   const error = useRouteError();
-  
+
   // Type-safe error handling
-  const errorMessage = error instanceof Error 
-    ? error.message 
-    : (error as { statusText?: string, message?: string }).statusText || 'An unexpected error occurred';
+  const errorMessage =
+    error instanceof Error
+      ? error.message
+      : (error as { statusText?: string; message?: string }).statusText ||
+        "An unexpected error occurred";
 
   console.error(error);
 
