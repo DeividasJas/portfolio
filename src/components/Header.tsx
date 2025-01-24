@@ -40,7 +40,7 @@ export default function Header() {
       <Link
         to="/"
         className={`${isScrolling && "bg-opacity-70"} 
-        bg-zinc-700 top-[45px] translate-y-[-50%] px-4 py-2 flex gap-2 items-center justify-center rounded-e-md cursor-pointer z-0 fixed`}
+        bg-zinc-700 top-[45px] translate-y-[-50%] px-4 py-2 flex gap-2 items-center justify-center rounded-e-md cursor-pointer z-0 fixed z-50`}
       >
         <Computer />
         {!size_s_Mobile && !isScrolling && <p>Deividas Jasas</p>}

@@ -37,6 +37,7 @@ export default function Footer() {
             <a
               href="https://www.linkedin.com/in/deividasjasas/"
               target="_blank"
+              rel="noreferrer"
             >
               <Linkedin
                 size={30}
@@ -45,7 +46,7 @@ export default function Footer() {
                 aria-label="Linkedin"
               />
             </a>
-            <a href="https://github.com/DeividasJas" target="_blank">
+            <a href="https://github.com/DeividasJas" target="_blank" rel="noreferrer">
               <Github
                 size={30}
                 strokeWidth={1}
