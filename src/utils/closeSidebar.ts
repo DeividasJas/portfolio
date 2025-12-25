@@ -5,26 +5,13 @@ export const handleClickOutside = (
   clicked: boolean,
   setClicked: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
-  if (
+  const clickedOutside =
     sidebarRef.current &&
-    !sidebarRef.current.contains(event.target as any) &&
+    !sidebarRef.current.contains(event.target as Node) &&
     buttonRef.current &&
-    !buttonRef.current.contains(event.target as any)
-  ) {
+    !buttonRef.current.contains(event.target as Node);
+
+  if (clickedOutside) {
     setClicked(false);
-  }
-  if (
-    buttonRef.current &&
-    buttonRef.current.contains(event.target as any) &&
-    clicked
-  ) {
-    setClicked(false);
-  }
-  if (
-    buttonRef.current &&
-    buttonRef.current.contains(event.target as any) &&
-    clicked
-  ) {
-    setClicked(true);
   }
 };

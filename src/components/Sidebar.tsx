@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { navbarLinks, navbarSocials } from '../types/navbarLinkTypes'
+import { navbarLinks, navbarSocials } from '@/data/navigation'
 import { handleResizeTransition } from '../utils/ResizeTransitionHandler'
 import { handleClickOutside } from '../utils/closeSidebar'
 import { MailOpen } from 'lucide-react'
@@ -10,12 +10,17 @@ import { useMediaQuery } from 'react-responsive'
 
 export default function Sidebar() {
   const [clicked, setClicked] = useState<boolean>(false)
+  const [mounted, setMounted] = useState<boolean>(false)
   const sidebarRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const isLandscape = useMediaQuery({ query: '(orientation: landscape)' })
   const isLargeLandscape = useMediaQuery({
     query: '(min-width: 768px) and (orientation: landscape)',
   })
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleButtonClick = () => {
     setClicked((prev) => !prev)
@@ -61,14 +66,14 @@ export default function Sidebar() {
         />
       </div>
       <nav
-        className={`sidebar text-zinc-800 ${clicked && "sidebar-active"} ${isLargeLandscape && "sidebar-landscape-large"}`}
+        className={`sidebar text-zinc-800 ${clicked && "sidebar-active"} ${mounted && isLargeLandscape && "sidebar-landscape-large"}`}
         ref={sidebarRef}
       >
         <div
-          className={`sidebar-content ${clicked && "sidebar-content-active"} ${isLargeLandscape && "sidebar-content-landscape-large"}`}
+          className={`sidebar-content ${clicked && "sidebar-content-active"} ${mounted && isLargeLandscape && "sidebar-content-landscape-large"}`}
         >
           <ul
-            className={`flex items-start justify-start w-full gap-2 ${isLandscape ? "flex-row gap-4" : "flex-col"}`}
+            className={`flex items-start justify-start w-full gap-2 ${mounted && isLandscape ? "flex-row gap-4" : "flex-col"}`}
           >
             {navbarLinks.map((link) => (
               <li key={link.path}>
@@ -91,7 +96,7 @@ export default function Sidebar() {
             </a>
           </div>
           <ul
-            className={`flex items-start justify-start w-full gap-2 ${isLandscape ? "flex-row gap-4" : "flex-col"}`}
+            className={`flex items-start justify-start w-full gap-2 ${mounted && isLandscape ? "flex-row gap-4" : "flex-col"}`}
           >
             {navbarSocials.map((link) => (
               <li key={link.path}>

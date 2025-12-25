@@ -1,6 +1,6 @@
 'use client'
 
-import { navbarLinks } from '@/types/navbarLinkTypes'
+import { navbarLinks } from '@/data/navigation'
 import { Github, Linkedin, MailOpen } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

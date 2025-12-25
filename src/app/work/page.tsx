@@ -1,5 +1,12 @@
-import websiteProjects from '@/types/projectTypes'
+import type { Metadata } from 'next'
+import { projects } from '@/data/projects'
 import ProjectCard from '@/components/ProjectCard'
+
+export const metadata: Metadata = {
+  title: 'Work',
+  description:
+    'Portfolio of web development projects including basketball registration apps, city tour guides, and more. Built with Next.js, React, and TypeScript.',
+}
 
 export default function ProjectsPage() {
   return (
@@ -11,10 +18,10 @@ export default function ProjectsPage() {
 
       <ul
         className={`grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 place-items-center md:mx-4 ${
-          websiteProjects.length >= 4 && 'xl:grid-cols-4'
+          projects.length >= 4 && 'xl:grid-cols-4'
         }`}
       >
-        {websiteProjects.map((project, index) => {
+        {projects.map((project, index) => {
           return <ProjectCard key={index} project={project} />
         })}
       </ul>

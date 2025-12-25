@@ -1,6 +1,6 @@
 'use client'
 
-import { StackCarousel } from '@/components/StackCarousesel'
+import { StackCarousel } from '@/components/StackCarousel'
 import { ArrowDown } from 'lucide-react'
 import {
   Accordion,
