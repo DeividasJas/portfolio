@@ -1,6 +1,7 @@
 import React from 'react'
-import websiteProjects from '@/types/projectTypes'
-import { WebsiteProjectType } from '@/types/projectTypes'
+import type { Metadata } from 'next'
+import { getProjectBySlug, getAllProjectSlugs } from '@/data/projects'
+import { WebsiteProjectType } from '@/types/project'
 import CarouselComponent from '@/components/CarouselComponent'
 
 interface ProjectPageProps {
@@ -9,18 +10,39 @@ interface ProjectPageProps {
   }>
 }
 
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const { projectName } = await params
+  const project = getProjectBySlug(projectName)
+
+  const logoUrl: string | undefined = project?.logoSrc
+    ? typeof project.logoSrc === 'string'
+      ? project.logoSrc
+      : project.logoSrc.src
+    : undefined
+
+  return {
+    title: project?.title ?? 'Project',
+    description: project?.description?.slice(0, 160) ?? 'Project details',
+    openGraph: {
+      title: project?.title ?? 'Project',
+      description: project?.description?.slice(0, 160) ?? 'Project details',
+      images: logoUrl ? [{ url: logoUrl }] : [],
+    },
+  }
+}
+
 export async function generateStaticParams() {
-  return websiteProjects.map((project) => ({
-    projectName: project.title,
+  return getAllProjectSlugs().map((slug) => ({
+    projectName: slug,
   }))
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { projectName } = await params
 
-  const data: WebsiteProjectType = websiteProjects.filter(
-    (project) => project.title === projectName,
-  )[0]
+  const data = getProjectBySlug(projectName)
 
   const keywords = ['basketball registration app']
 
@@ -46,6 +68,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       ) : (
         <React.Fragment key={index}>{part}</React.Fragment>
       ),
+    )
+  }
+
+  if (!data) {
+    return (
+      <div className="flex flex-col items-center justify-center gap-4">
+        <h1 className="z-0 mt-8 text-xl text-center md:text-3xl">
+          Project not found
+        </h1>
+      </div>
     )
   }
 

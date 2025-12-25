@@ -10,7 +10,7 @@ import {
   CarouselPrevious,
 } from './ui/carousel'
 import { type CarouselApi } from '@/components/ui/carousel'
-import { ImageType } from '@/types/projectTypes'
+import { ImageType } from '@/types/project'
 import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
