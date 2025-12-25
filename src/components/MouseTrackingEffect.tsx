@@ -1,5 +1,7 @@
-import { useSpring, animated } from "@react-spring/web";
-import { useEffect, useState } from "react";
+'use client'
+
+import { useSpring, animated } from '@react-spring/web'
+import { useEffect, useState } from 'react'
 
 export default function MouseTrackingEffect() {
   const [props1, api1] = useSpring(() => ({ x: 0, y: 0 }));

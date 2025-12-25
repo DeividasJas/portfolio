@@ -1,9 +1,11 @@
-import basketballAssets from "@/assets/basketjoin/basketjoin";
-import wanderVilniusAssets from "@/assets/wondervilnius/wandervilnius";
+import type { StaticImageData } from 'next/image'
+import basketballAssets from '@/assets/basketjoin/basketjoin'
+import wanderVilniusAssets from '@/assets/wondervilnius/wandervilnius'
+
 export type ImageType = {
-  src: string;
-  alt: string;
-};
+  src: string | StaticImageData
+  alt: string
+}
 
 export type WebsiteProjectType = {
   title: string;

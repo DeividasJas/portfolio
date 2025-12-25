@@ -1,42 +1,52 @@
-import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { navbarLinks, navbarSocials } from "../types/navbarLinkTypes";
-import { handleResizeTransition } from "../utils/ResizeTransitionHandler";
-import { handleClickOutside } from "../utils/closeSidebar";
-import { MailOpen } from "lucide-react";
-import { useMediaQuery } from "react-responsive";
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
+import { navbarLinks, navbarSocials } from '../types/navbarLinkTypes'
+import { handleResizeTransition } from '../utils/ResizeTransitionHandler'
+import { handleClickOutside } from '../utils/closeSidebar'
+import { MailOpen } from 'lucide-react'
+import { useMediaQuery } from 'react-responsive'
 
 export default function Sidebar() {
-  const [clicked, setClicked] = useState<boolean>(false);
-  const sidebarRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const body = document.body;
-  const isLandscape = useMediaQuery({ query: "(orientation: landscape)" });
+  const [clicked, setClicked] = useState<boolean>(false)
+  const sidebarRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const isLandscape = useMediaQuery({ query: '(orientation: landscape)' })
   const isLargeLandscape = useMediaQuery({
-    query: "(min-width: 768px) and (orientation: landscape)",
-  });
-
+    query: '(min-width: 768px) and (orientation: landscape)',
+  })
 
   const handleButtonClick = () => {
-    setClicked((prev) => !prev);
-  };
+    setClicked((prev) => !prev)
+  }
 
-  handleResizeTransition(".sidebar");
   useEffect(() => {
-    if (clicked) {
-      body.style.overflow = "hidden";
-    } else {
-      body.style.overflow = "visible";
+    if (typeof window !== 'undefined') {
+      const cleanup = handleResizeTransition('.sidebar')
+      return cleanup
     }
-    const closeSideBar = (event: MouseEvent) => {
-      handleClickOutside(event, sidebarRef, buttonRef, clicked, setClicked);
-    };
+  }, [])
 
-    document.addEventListener("click", closeSideBar);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const body = document.body
+      if (clicked) {
+        body.style.overflow = 'hidden'
+      } else {
+        body.style.overflow = 'visible'
+      }
 
-    return () => {
-      document.removeEventListener("click", closeSideBar);
-    };
+      const closeSideBar = (event: MouseEvent) => {
+        handleClickOutside(event, sidebarRef, buttonRef, clicked, setClicked)
+      }
+
+      document.addEventListener('click', closeSideBar)
+
+      return () => {
+        document.removeEventListener('click', closeSideBar)
+      }
+    }
   });
   return (
     <>
@@ -62,7 +72,7 @@ export default function Sidebar() {
           >
             {navbarLinks.map((link) => (
               <li key={link.path}>
-                <Link to={link.path} onClick={handleButtonClick}>
+                <Link href={link.path} onClick={handleButtonClick}>
                   {link.title}
                 </Link>
               </li>
@@ -85,14 +95,15 @@ export default function Sidebar() {
           >
             {navbarSocials.map((link) => (
               <li key={link.path}>
-                <Link
-                  to={link.path}
+                <a
+                  href={link.path}
                   onClick={handleButtonClick}
                   target="_blank"
+                  rel="noreferrer"
                   aria-label={link.title}
                 >
                   {link.title}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

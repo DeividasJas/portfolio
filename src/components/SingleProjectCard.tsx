@@ -10,8 +10,6 @@ import { ImageType } from "@/types/projectTypes";
 import { WebsiteProjectType } from "@/types/projectTypes";
 
 export default function SingleProjectCard(project: WebsiteProjectType) {
-  console.log(project);
-
   return (
     <>
       <section>
@@ -21,9 +19,12 @@ export default function SingleProjectCard(project: WebsiteProjectType) {
             {project.images.map((image: ImageType, index: number) => {
               return (
                 <CarouselItem key={index}>
-                  <img src={image.src} alt={image.alt} />
+                  <img
+                    src={typeof image.src === 'string' ? image.src : image.src.src}
+                    alt={image.alt}
+                  />
                 </CarouselItem>
-              );
+              )
             })}
           </CarouselContent>
           <CarouselPrevious />

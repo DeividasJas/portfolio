@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Computer } from "lucide-react";
-import Sidebar from "./Sidebar";
-import "../styles/header.css";
+'use client'
+
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Computer } from 'lucide-react'
+import Sidebar from './Sidebar'
 
 export default function Header() {
-  const location = useLocation();
+  const pathname = usePathname()
 
   const [isScrolling, setIsScrolling] = useState(true);
   const [size_s_Mobile, setSize_s_Mobile] = useState(false);
@@ -32,14 +34,14 @@ export default function Header() {
 
   return (
     <header
-      className={`flex items-center justify-start h-0 
-        ${location.pathname !== "/" && "h-20"}
+      className={`flex items-center justify-start h-0
+        ${pathname !== '/' && 'h-20'}
         `}
       id="header"
     >
       <Link
-        to="/"
-        className={`${isScrolling && "bg-opacity-70"} 
+        href="/"
+        className={`${isScrolling && 'bg-opacity-70'}
         bg-zinc-700 top-[45px] translate-y-[-50%] px-4 py-2 flex gap-2 items-center justify-center rounded-e-md cursor-pointer z-0 fixed z-50`}
       >
         <Computer />
@@ -47,5 +49,5 @@ export default function Header() {
       </Link>
       <Sidebar />
     </header>
-  );
+  )
 }

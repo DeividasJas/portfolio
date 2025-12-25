@@ -1,30 +1,36 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import websiteProjects from "@/types/projectTypes";
-import { WebsiteProjectType } from "@/types/projectTypes";
-import CarouselComponent from "./CarouselComponent";
+'use client'
 
-export default function ProjectPage() {
-  const { projectName } = useParams();
+import React from 'react'
+import websiteProjects from '@/types/projectTypes'
+import { WebsiteProjectType } from '@/types/projectTypes'
+import CarouselComponent from '@/components/CarouselComponent'
+
+interface ProjectPageProps {
+  params: Promise<{
+    projectName: string
+  }>
+}
+
+export default function ProjectPage({ params }: ProjectPageProps) {
+  const { projectName } = React.use(params)
 
   const data: WebsiteProjectType = websiteProjects.filter(
     (project) => project.title === projectName,
-  )[0];
-  // console.log(data);
+  )[0]
 
-  const keywords = ["basketball registration app"];
+  const keywords = ['basketball registration app']
 
   interface HighlightKeywordsProps {
-    text: string;
-    keywords: string[];
+    text: string
+    keywords: string[]
   }
 
   const highlightKeywords = ({
     text,
     keywords,
   }: HighlightKeywordsProps): JSX.Element[] => {
-    const regex = new RegExp(`(${keywords.join("|")})`, "gi");
-    const parts = text.split(regex);
+    const regex = new RegExp(`(${keywords.join('|')})`, 'gi')
+    const parts = text.split(regex)
 
     return parts.map((part, index) =>
       keywords.some(
@@ -36,8 +42,8 @@ export default function ProjectPage() {
       ) : (
         <React.Fragment key={index}>{part}</React.Fragment>
       ),
-    );
-  };
+    )
+  }
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
@@ -47,5 +53,5 @@ export default function ProjectPage() {
         {highlightKeywords({ text: data.description, keywords })}
       </p>
     </div>
-  );
+  )
 }
