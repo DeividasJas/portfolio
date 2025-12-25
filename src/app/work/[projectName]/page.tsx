@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import websiteProjects from '@/types/projectTypes'
 import { WebsiteProjectType } from '@/types/projectTypes'
@@ -11,8 +9,14 @@ interface ProjectPageProps {
   }>
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const { projectName } = React.use(params)
+export async function generateStaticParams() {
+  return websiteProjects.map((project) => ({
+    projectName: project.title,
+  }))
+}
+
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { projectName } = await params
 
   const data: WebsiteProjectType = websiteProjects.filter(
     (project) => project.title === projectName,
