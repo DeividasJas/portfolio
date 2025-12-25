@@ -1,16 +1,15 @@
-import { WebsiteProjectType } from "@/types/projectTypes";
-import { Link } from "react-router-dom";
+import { WebsiteProjectType } from '@/types/projectTypes'
+import Link from 'next/link'
+
 export default function ProjectCard({
   project,
 }: {
-  project: WebsiteProjectType;
+  project: WebsiteProjectType
 }) {
-  console.log(project);
-
   return (
     <li className="flex flex-col items-center justify-between h-64 mx-12 transition hover:scale-105  w-full max-w-[400px] min-w-0">
       <Link
-        to={`/work/${project.title}`}
+        href={`/work/${project.title}`}
         className="flex items-center justify-center w-full rounded-t-sm h-4/6 bg-zinc-800"
       >
         <img

@@ -1,5 +1,7 @@
-import "./../styles/navBullet.css";
-import ScrollSpy from "react-scrollspy-navigation";
+'use client'
+
+import ScrollSpy from 'react-scrollspy-navigation'
+
 export default function NavBullets() {
   return (
     <ScrollSpy activeClass="nav-active" behavior="smooth">

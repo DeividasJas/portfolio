@@ -1,4 +1,6 @@
-import Autoplay from "embla-carousel-autoplay";
+'use client'
+
+import Autoplay from 'embla-carousel-autoplay'
 
 import {
   Carousel,
@@ -6,14 +8,14 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "./ui/carousel";
-import { type CarouselApi } from "@/components/ui/carousel";
-import { ImageType } from "@/types/projectTypes";
-import { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
+} from './ui/carousel'
+import { type CarouselApi } from '@/components/ui/carousel'
+import { ImageType } from '@/types/projectTypes'
+import { useEffect, useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 interface CarouselComponentProps {
-  images: ImageType[];
+  images: ImageType[]
 }
 
 export default function CarouselComponent({ images }: CarouselComponentProps) {
@@ -52,13 +54,13 @@ export default function CarouselComponent({ images }: CarouselComponentProps) {
               return (
                 <CarouselItem key={index} className="pl-2 md:pl-4">
                   <img
-                    src={image.src}
+                    src={typeof image.src === 'string' ? image.src : image.src.src}
                     alt={image.alt}
                     className="rounded"
                     loading="lazy"
                   />
                 </CarouselItem>
-              );
+              )
             })}
           </CarouselContent>
           {isDesktop && (
