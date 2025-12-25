@@ -26,7 +26,7 @@ jobs:
       - uses: burnett01/rsync-deployments@7.0.2
         with:
           switches: -avz --delete --no-group
-          path: dist/
+          path: .next/
           remote_path: /var/www/portfolio
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USER }}
