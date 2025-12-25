@@ -32,7 +32,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="flex items-center justify-around min-w-full gap-4">
-          <p>Designed and developed by Deividas Jasas. © 2024</p>
+          <p>Designed and developed by Deividas Jasas. © 2025</p>
           <div className="flex gap-10">
             <a
               href="https://www.linkedin.com/in/deividasjasas/"
