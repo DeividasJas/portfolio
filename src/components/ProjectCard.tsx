@@ -1,4 +1,5 @@
 import { WebsiteProjectType } from '@/types/project'
+import { getImageSrc } from '@/lib/utils'
 import Link from 'next/link'
 
 export default function ProjectCard({
@@ -6,11 +7,6 @@ export default function ProjectCard({
 }: {
   project: WebsiteProjectType
 }) {
-  const logoSrc =
-    typeof project.logoSrc === 'string'
-      ? project.logoSrc
-      : project.logoSrc.src
-
   return (
     <li className="flex flex-col items-center justify-between h-64 mx-12 transition hover:scale-105  w-full max-w-[400px] min-w-0">
       <Link
@@ -18,7 +14,7 @@ export default function ProjectCard({
         className="flex items-center justify-center w-full rounded-t-sm h-4/6 bg-zinc-800"
       >
         <img
-          src={logoSrc}
+          src={getImageSrc(project.logoSrc)}
           alt={`${project.title} Logo`}
           className="w-20"
         />

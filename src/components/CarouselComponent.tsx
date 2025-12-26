@@ -11,6 +11,7 @@ import {
 } from './ui/carousel'
 import { type CarouselApi } from '@/components/ui/carousel'
 import { ImageType } from '@/types/project'
+import { getImageSrc } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
@@ -54,7 +55,7 @@ export default function CarouselComponent({ images }: CarouselComponentProps) {
               return (
                 <CarouselItem key={index} className="pl-2 md:pl-4">
                   <img
-                    src={typeof image.src === 'string' ? image.src : image.src.src}
+                    src={getImageSrc(image.src)}
                     alt={image.alt}
                     className="rounded"
                     loading="lazy"

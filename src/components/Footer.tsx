@@ -1,6 +1,7 @@
 'use client'
 
-import { navbarLinks } from '@/data/navigation'
+import { navbarLinks, navbarSocials } from '@/data/navigation'
+import { siteConfig } from '@/data/site-config'
 import { Github, Linkedin, MailOpen } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -19,46 +20,43 @@ export default function Footer() {
               SAY HELLO <MailOpen size={20} />
             </p>
             <a
-              href="mailto:jasas.code@gmail.com"
-              className="transition hover:scale-105 hover:text-blue-500"
+              href={`mailto:${siteConfig.email}`}
+              className="link-hover"
             >
-              jasas.code@gmail.com
+              {siteConfig.email}
             </a>
           </div>
           <ul>
             {navbarLinks.map((link) => {
               return (
                 <Link key={link.path} href={link.path}>
-                  <li className="transition hover:scale-105 hover:text-blue-500">{link.title}</li>
+                  <li className="link-hover">{link.title}</li>
                 </Link>
               )
             })}
           </ul>
         </div>
         <div className="flex items-center justify-around min-w-full gap-4">
-          <p>Designed and developed by Deividas Jasas. © 2025</p>
+          <p>Designed and developed by {siteConfig.author}. © {siteConfig.year}</p>
           <div className="flex gap-10">
-            <a
-              href="https://www.linkedin.com/in/deividasjasas/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Linkedin
-                size={30}
-                strokeWidth={1}
-                className="transition hover:scale-110 hover:text-blue-500"
-                aria-label="Linkedin"
-              />
-            </a>
-            <a href="https://github.com/DeividasJas" target="_blank" rel="noreferrer">
-              <Github
-                size={30}
-                strokeWidth={1}
-                className="transition hover:scale-110 hover:text-blue-500"
-                aria-label="Github"
-
-              />
-            </a>
+            {navbarSocials.map((social) => {
+              const Icon = social.title === 'LinkedIn' ? Linkedin : Github
+              return (
+                <a
+                  key={social.path}
+                  href={social.path}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.title}
+                >
+                  <Icon
+                    size={30}
+                    strokeWidth={1}
+                    className="transition hover:scale-110 hover:text-blue-500"
+                  />
+                </a>
+              )
+            })}
           </div>
         </div>
       </section>

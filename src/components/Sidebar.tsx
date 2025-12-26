@@ -1,80 +1,56 @@
-'use client'
+'use client';
 
-import { useState, useRef, useEffect } from 'react'
-import Link from 'next/link'
-import { navbarLinks, navbarSocials } from '@/data/navigation'
-import { handleResizeTransition } from '../utils/ResizeTransitionHandler'
-import { handleClickOutside } from '../utils/closeSidebar'
-import { MailOpen } from 'lucide-react'
-import { useMediaQuery } from 'react-responsive'
+import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
+import { navbarLinks, navbarSocials } from '@/data/navigation';
+import { siteConfig } from '@/data/site-config';
+import { handleResizeTransition } from '../utils/ResizeTransitionHandler';
+import { MailOpen } from 'lucide-react';
+import { useLockBodyScroll } from '@/hooks/useLockBodyScroll';
+import { useOnClickOutside } from '@/hooks/useOnClickOutside';
+import { useKeyboardShortcut } from '@/hooks/useKeyboardShortcut';
 
 export default function Sidebar() {
-  const [clicked, setClicked] = useState<boolean>(false)
-  const [mounted, setMounted] = useState<boolean>(false)
-  const sidebarRef = useRef<HTMLDivElement>(null)
-  const buttonRef = useRef<HTMLButtonElement>(null)
-  const isLandscape = useMediaQuery({ query: '(orientation: landscape)' })
-  const isLargeLandscape = useMediaQuery({
-    query: '(min-width: 768px) and (orientation: landscape)',
-  })
+  const [clicked, setClicked] = useState<boolean>(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Custom hooks for sidebar functionality
+  useLockBodyScroll(clicked);
+  useOnClickOutside([sidebarRef, buttonRef], () => setClicked(false), clicked);
+  useKeyboardShortcut('Escape', () => setClicked(false), clicked);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    if (typeof window !== 'undefined') {
+      const cleanup = handleResizeTransition('.sidebar');
+      return cleanup;
+    }
+  }, []);
 
   const handleButtonClick = () => {
-    setClicked((prev) => !prev)
-  }
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const cleanup = handleResizeTransition('.sidebar')
-      return cleanup
-    }
-  }, [])
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const body = document.body
-      if (clicked) {
-        body.style.overflow = 'hidden'
-      } else {
-        body.style.overflow = 'visible'
-      }
-
-      const closeSideBar = (event: MouseEvent) => {
-        handleClickOutside(event, sidebarRef, buttonRef, clicked, setClicked)
-      }
-
-      document.addEventListener('click', closeSideBar)
-
-      return () => {
-        document.removeEventListener('click', closeSideBar)
-      }
-    }
-  });
+    setClicked((prev) => !prev);
+  };
   return (
     <>
       <div
-        className={`nav-button-wrapper ${clicked && "nav-button-wrapper-active"}`}
+        className={`nav-button-wrapper ${clicked && 'nav-button-wrapper-active'}`}
       >
         <button
-          className={`nav-button ${clicked && "nav-btn-active"}`}
-          aria-label="Open Sidebar"
+          className={`nav-button ${clicked && 'nav-btn-active'}`}
+          aria-label='Open Sidebar'
           onClick={handleButtonClick}
           ref={buttonRef}
         />
       </div>
+
+      {/* Sidebar Navigation */}
       <nav
-        className={`sidebar text-zinc-800 ${clicked && "sidebar-active"} ${mounted && isLargeLandscape && "sidebar-landscape-large"}`}
+        className={`sidebar text-zinc-800 ${clicked && 'sidebar-active'}`}
         ref={sidebarRef}
       >
-        <div
-          className={`sidebar-content ${clicked && "sidebar-content-active"} ${mounted && isLargeLandscape && "sidebar-content-landscape-large"}`}
-        >
-          <ul
-            className={`flex items-start justify-start w-full gap-2 ${mounted && isLandscape ? "flex-row gap-4" : "flex-col"}`}
-          >
+        <div className={`sidebar-content ${clicked && 'sidebar-content-active'}`}>
+          {/* Navigation Links */}
+          <ul className='flex flex-col items-start justify-start w-full gap-2 landscape:flex-row landscape:gap-4'>
             {navbarLinks.map((link) => (
               <li key={link.path}>
                 <Link href={link.path} onClick={handleButtonClick}>
@@ -83,28 +59,30 @@ export default function Sidebar() {
               </li>
             ))}
           </ul>
-          <div className="relative flex flex-col items-start justify-start w-full gap-2">
-            <p className="flex items-center gap-2">
+
+          {/* Contact Section */}
+          <div className='relative flex flex-col items-start justify-start w-full gap-2'>
+            <p className='flex items-center gap-2'>
               SAY HELLO <MailOpen size={20} strokeWidth={2} />
             </p>
             <a
-              href="mailto:jasas.code@gmail.com"
-              className="mail-hover"
+              href={`mailto:${siteConfig.email}`}
+              className='mail-hover'
               onClick={handleButtonClick}
             >
-              jasas.code@gmail.com
+              {siteConfig.email}
             </a>
           </div>
-          <ul
-            className={`flex items-start justify-start w-full gap-2 ${mounted && isLandscape ? "flex-row gap-4" : "flex-col"}`}
-          >
+
+          {/* Social Links */}
+          <ul className='flex flex-col items-start justify-start w-full gap-2 landscape:flex-row landscape:gap-4'>
             {navbarSocials.map((link) => (
               <li key={link.path}>
                 <a
                   href={link.path}
                   onClick={handleButtonClick}
-                  target="_blank"
-                  rel="noreferrer"
+                  target='_blank'
+                  rel='noreferrer'
                   aria-label={link.title}
                 >
                   {link.title}
