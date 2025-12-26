@@ -2,7 +2,6 @@ export const handleClickOutside = (
   event: MouseEvent,
   sidebarRef: React.RefObject<HTMLElement>,
   buttonRef: React.RefObject<HTMLElement>,
-  clicked: boolean,
   setClicked: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
   const clickedOutside =

@@ -25,19 +25,19 @@ export default function HomePage() {
       >
         <p className="md:max-w-[660px] max-w-[497px] text-lg md:text-2xl mx-auto">
           I'm a Junior Programmer with a{' '}
-          <span className="text-blue-500 transition-colors duration-500 ease-in-out sm:group-hover:text-blue-500 sm:text-inherit">
+          <span className="highlight-text">
             passion
           </span>{' '}
           for building web experiences that stand out. Whether it's crafting
           sleek landing pages or complex applications, I focus on making every{' '}
-          <span className="text-blue-500 transition-colors duration-500 ease-in-out sm:group-hover:text-blue-500 sm:text-inherit">
+          <span className="highlight-text">
             detail
           </span>{' '}
           count.
         </p>
         <h2 className="text-2xl md:text-3xl">
           Let's{' '}
-          <span className="text-blue-500 transition-colors duration-500 ease-in-out sm:group-hover:text-blue-500 sm:text-inherit">
+          <span className="highlight-text">
             Build
           </span>{' '}
           Something Great Together.

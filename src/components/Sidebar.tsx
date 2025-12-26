@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { navbarLinks, navbarSocials } from '@/data/navigation'
+import { siteConfig } from '@/data/site-config'
 import { handleResizeTransition } from '../utils/ResizeTransitionHandler'
 import { handleClickOutside } from '../utils/closeSidebar'
 import { MailOpen } from 'lucide-react'
@@ -34,25 +35,20 @@ export default function Sidebar() {
   }, [])
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const body = document.body
-      if (clicked) {
-        body.style.overflow = 'hidden'
-      } else {
-        body.style.overflow = 'visible'
-      }
+    const body = document.body
+    body.style.overflow = clicked ? 'hidden' : 'visible'
 
-      const closeSideBar = (event: MouseEvent) => {
-        handleClickOutside(event, sidebarRef, buttonRef, clicked, setClicked)
-      }
-
-      document.addEventListener('click', closeSideBar)
-
-      return () => {
-        document.removeEventListener('click', closeSideBar)
-      }
+    const closeSideBar = (event: MouseEvent) => {
+      handleClickOutside(event, sidebarRef, buttonRef, setClicked)
     }
-  });
+
+    document.addEventListener('click', closeSideBar)
+
+    return () => {
+      document.removeEventListener('click', closeSideBar)
+      body.style.overflow = 'visible'
+    }
+  }, [clicked]);
   return (
     <>
       <div
@@ -88,11 +84,11 @@ export default function Sidebar() {
               SAY HELLO <MailOpen size={20} strokeWidth={2} />
             </p>
             <a
-              href="mailto:jasas.code@gmail.com"
+              href={`mailto:${siteConfig.email}`}
               className="mail-hover"
               onClick={handleButtonClick}
             >
-              jasas.code@gmail.com
+              {siteConfig.email}
             </a>
           </div>
           <ul

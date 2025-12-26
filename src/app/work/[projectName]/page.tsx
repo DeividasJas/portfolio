@@ -1,7 +1,6 @@
-import React from 'react'
 import type { Metadata } from 'next'
 import { getProjectBySlug, getAllProjectSlugs } from '@/data/projects'
-import { WebsiteProjectType } from '@/types/project'
+import { getImageSrc } from '@/lib/utils'
 import CarouselComponent from '@/components/CarouselComponent'
 
 interface ProjectPageProps {
@@ -16,11 +15,7 @@ export async function generateMetadata({
   const { projectName } = await params
   const project = getProjectBySlug(projectName)
 
-  const logoUrl: string | undefined = project?.logoSrc
-    ? typeof project.logoSrc === 'string'
-      ? project.logoSrc
-      : project.logoSrc.src
-    : undefined
+  const logoUrl = project?.logoSrc ? getImageSrc(project.logoSrc) : undefined
 
   return {
     title: project?.title ?? 'Project',
@@ -66,7 +61,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {part}
         </span>
       ) : (
-        <React.Fragment key={index}>{part}</React.Fragment>
+        <span key={index}>{part}</span>
       ),
     )
   }
