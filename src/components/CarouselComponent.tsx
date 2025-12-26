@@ -13,7 +13,6 @@ import { type CarouselApi } from '@/components/ui/carousel'
 import { ImageType } from '@/types/project'
 import { getImageSrc } from '@/lib/utils'
 import { useEffect, useState } from 'react'
-import { useMediaQuery } from 'react-responsive'
 
 interface CarouselComponentProps {
   images: ImageType[]
@@ -23,8 +22,6 @@ export default function CarouselComponent({ images }: CarouselComponentProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
-
-  const isDesktop = useMediaQuery({ minWidth: 640 });
 
   useEffect(() => {
     if (!api) {
@@ -64,17 +61,15 @@ export default function CarouselComponent({ images }: CarouselComponentProps) {
               )
             })}
           </CarouselContent>
-          {isDesktop && (
-            <div className="relative flex justify-center h-5 mt-2">
-              <CarouselPrevious className="relative w-5 h-5 bg-black border-zinc-400 -left-2" />
-              <CarouselNext className="relative w-5 h-5 bg-inherit border-zinc-400 -right-2" />
-            </div>
-          )}
+          <div className="relative hidden sm:flex justify-center h-5 mt-2">
+            <CarouselPrevious className="relative w-5 h-5 bg-black border-zinc-400 -left-2" />
+            <CarouselNext className="relative w-5 h-5 bg-inherit border-zinc-400 -right-2" />
+          </div>
         </Carousel>
         <div className="mt-1 text-xs text-center opacity-50">
           <p>
             Slide {current} of {count}
-            {!isDesktop && " Swipe to view"}
+            <span className="sm:hidden"> Swipe to view</span>
           </p>
         </div>
       </div>
