@@ -48,9 +48,11 @@ export default function Sidebar() {
         className={`sidebar text-zinc-800 ${clicked && 'sidebar-active'}`}
         ref={sidebarRef}
       >
-        <div className={`sidebar-content ${clicked && 'sidebar-content-active'}`}>
+        <div
+          className={`sidebar-content ${clicked && 'sidebar-content-active'}`}
+        >
           {/* Navigation Links */}
-          <ul className='flex flex-col items-start justify-start w-full gap-2 landscape:flex-row landscape:gap-4'>
+          <ul className='flex flex-row items-start justify-start w-full gap-4'>
             {navbarLinks.map((link) => (
               <li key={link.path}>
                 <Link href={link.path} onClick={handleButtonClick}>
@@ -75,7 +77,7 @@ export default function Sidebar() {
           </div>
 
           {/* Social Links */}
-          <ul className='flex flex-col items-start justify-start w-full gap-2 landscape:flex-row landscape:gap-4'>
+          <ul className='flex flex-row items-start justify-start w-full gap-4'>
             {navbarSocials.map((link) => (
               <li key={link.path}>
                 <a
