@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* ========================================
    Base Styles
@@ -18,8 +16,34 @@
 }
 
 /* ========================================
-   Theme Variables
+   Theme Variables & Configuration
    ======================================== */
+
+@theme {
+  --color-background: 0 0% 100%;
+  --color-foreground: 240 10% 3.9%;
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 240 10% 3.9%;
+  --color-popover: 0 0% 100%;
+  --color-popover-foreground: 240 10% 3.9%;
+  --color-primary: 240 5.9% 10%;
+  --color-primary-foreground: 0 0% 98%;
+  --color-secondary: 240 4.8% 95.9%;
+  --color-secondary-foreground: 240 5.9% 10%;
+  --color-muted: 240 4.8% 95.9%;
+  --color-muted-foreground: 240 3.8% 46.1%;
+  --color-accent: 240 4.8% 95.9%;
+  --color-accent-foreground: 240 5.9% 10%;
+  --color-destructive: 0 84.2% 60.2%;
+  --color-destructive-foreground: 0 0% 98%;
+  --color-border: 240 5.9% 90%;
+  --color-input: 240 5.9% 90%;
+  --color-ring: 240 10% 3.9%;
+
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+}
 
 @layer base {
   :root {
@@ -68,10 +92,12 @@
   }
 
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 
@@ -81,15 +107,46 @@
 
 @layer components {
   .link-hover {
-    @apply transition hover:scale-105 hover:text-blue-500;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .link-hover:hover {
+    --tw-scale-x: 1.05;
+    --tw-scale-y: 1.05;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    color: rgb(59 130 246);
   }
 
   .icon-hover {
-    @apply transition hover:scale-110 hover:text-blue-500;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .icon-hover:hover {
+    --tw-scale-x: 1.1;
+    --tw-scale-y: 1.1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    color: rgb(59 130 246);
   }
 
   .highlight-text {
-    @apply text-blue-500 transition-colors duration-500 ease-in-out sm:group-hover:text-blue-500 sm:text-inherit;
+    color: rgb(59 130 246);
+    transition-property: color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
+  }
+
+  @media (min-width: 640px) {
+    .highlight-text {
+      color: inherit;
+    }
+
+    .group:hover .highlight-text {
+      color: rgb(59 130 246);
+    }
   }
 }
 
