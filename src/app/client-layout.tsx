@@ -8,18 +8,10 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-zinc-900 layout text-zinc-300 text-pretty">
+    <div className="layout relative flex min-h-screen flex-col text-pretty bg-zinc-900 text-zinc-300">
       <Header />
-      <div
-        className={
-          pathname === '/'
-            ? 'snap-scroll-container'
-            : 'flex flex-col h-full grow'
-        }
-      >
-        <main className={pathname === '/' ? '' : 'grow px-4 pb-4'}>
-          {children}
-        </main>
+      <div className={pathname === '/' ? 'snap-scroll-container' : 'flex h-full grow flex-col'}>
+        <main className={pathname === '/' ? '' : 'grow px-4 pb-4'}>{children}</main>
         <Footer />
       </div>
     </div>

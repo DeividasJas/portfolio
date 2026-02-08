@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getProjectBySlug, getAllProjectSlugs } from '@/data/projects'
+import projects from '@/data/projects'
 import { getImageSrc } from '@/lib/utils'
 import CarouselComponent from '@/components/CarouselComponent'
 
@@ -9,80 +9,82 @@ interface ProjectPageProps {
   }>
 }
 
-export async function generateMetadata({
-  params,
-}: ProjectPageProps): Promise<Metadata> {
+export function generateStaticParams() {
+  return projects.map((p) => ({ projectName: p.slug }))
+}
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { projectName } = await params
-  const project = getProjectBySlug(projectName)
+  const project = projects.find((p) => p.slug === projectName)
 
   const logoUrl = project?.logoSrc ? getImageSrc(project.logoSrc) : undefined
 
   return {
     title: project?.title ?? 'Project',
-    description: project?.description?.slice(0, 160) ?? 'Project details',
+    description: project?.projectDescription?.slice(0, 160) ?? 'Project details',
     openGraph: {
       title: project?.title ?? 'Project',
-      description: project?.description?.slice(0, 160) ?? 'Project details',
-      images: logoUrl ? [{ url: logoUrl }] : [],
-    },
+      description: project?.projectDescription?.slice(0, 160) ?? 'Project details',
+      images: logoUrl ? [{ url: logoUrl }] : []
+    }
   }
-}
-
-export async function generateStaticParams() {
-  return getAllProjectSlugs().map((slug) => ({
-    projectName: slug,
-  }))
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { projectName } = await params
 
-  const data = getProjectBySlug(projectName)
+  const data = projects.find((p) => p.slug === projectName)
 
-  const keywords = ['basketball registration app']
+  const keywords = ['basketball registration app', 'personalized AI-generated romance story']
 
-  interface HighlightKeywordsProps {
-    text: string
-    keywords: string[]
-  }
-
-  const highlightKeywords = ({
-    text,
-    keywords,
-  }: HighlightKeywordsProps): JSX.Element[] => {
+  const highlightKeywords = ({ keywords, text }: { keywords: string[]; text?: string }): JSX.Element[] => {
     const regex = new RegExp(`(${keywords.join('|')})`, 'gi')
-    const parts = text.split(regex)
+    const parts = text?.split(regex) ?? []
 
     return parts.map((part, index) =>
-      keywords.some(
-        (keyword) => part.toLowerCase() === keyword.toLowerCase(),
-      ) ? (
+      keywords.some((keyword) => part.toLowerCase() === keyword.toLowerCase()) ? (
         <span key={index} className="text-blue-500">
           {part}
         </span>
       ) : (
         <span key={index}>{part}</span>
-      ),
+      )
     )
   }
 
   if (!data) {
-    return (
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="z-0 mt-8 text-xl text-center md:text-3xl">
-          Project not found
-        </h1>
-      </div>
-    )
+    return <h1 className="mx-auto flex items-center text-center text-xl md:text-3xl">Project not found</h1>
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <h1 className="z-0 mt-8 text-xl text-center md:text-3xl">{data.title}</h1>
+    <div className="flex flex-col gap-4 px-8 text-left">
+      <h1 className="z-0 mt-8 text-center text-xl md:text-3xl">{data.title}</h1>
+
       <CarouselComponent images={data.images} />
-      <p className="mx-8 max-w-[800px]">
-        {highlightKeywords({ text: data.description, keywords })}
-      </p>
+      <div className="mx-auto flex max-w-[800px] flex-col gap-4">
+        <section>
+          <p className="mb-2 text-lg font-semibold">About Project</p>
+          <p>
+            {highlightKeywords({
+              text: data.projectDescription,
+              keywords
+            })}
+          </p>
+        </section>
+        <section>
+          <p className="mb-2 text-lg font-semibold">My Role</p>
+          <p>
+            {highlightKeywords({
+              text: data.myWorkDescription,
+              keywords
+            })}
+          </p>
+        </section>
+        <section>
+          <p className="mb-2 text-lg font-semibold">Stack</p>
+          <p>{data.stack?.join(', ')}</p>
+        </section>
+      </div>
     </div>
   )
 }
