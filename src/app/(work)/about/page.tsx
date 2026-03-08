@@ -1,5 +1,4 @@
-'use client'
-
+import type { Metadata } from 'next'
 import { StackCarousel } from '@/components/StackCarousel'
 import { ArrowDown } from 'lucide-react'
 import {
@@ -9,24 +8,30 @@ import {
   AccordionTrigger,
 } from '@radix-ui/react-accordion'
 
-export default function AboutPage() {
-  const technologies = [
-    'Next.js',
-    'Tailwind CSS',
-    'TypeScript',
-    'PostgreSQL',
-    'JavaScript',
-    'Prisma',
-    'Node.js',
-    'GitHub',
-    'Vercel',
-    'Docker',
-    'Express.js',
-    'Supabase',
-  ]
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    "I'm a Junior Programmer with experience in both front-end and back-end development, focusing on writing clean, efficient code and building robust, user-friendly applications.",
+}
 
+const technologies = [
+  'Next.js',
+  'Tailwind CSS',
+  'TypeScript',
+  'PostgreSQL',
+  'JavaScript',
+  'Prisma',
+  'Node.js',
+  'GitHub',
+  'Vercel',
+  'Docker',
+  'Express.js',
+  'Supabase',
+]
+
+export default function AboutPage() {
   return (
-    <>
+    <div className="px-4 pb-4">
       <section className="flex flex-col items-center gap-4 my-8 text-md max-w-[850px] mx-auto">
         <p>
           I'm a <span className="text-blue-500">Junior Programmer</span> and
@@ -75,6 +80,6 @@ export default function AboutPage() {
       </Accordion>
 
       <StackCarousel />
-    </>
+    </div>
   )
 }
