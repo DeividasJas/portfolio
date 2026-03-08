@@ -5,7 +5,6 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { getImageSrc } from '@/lib/utils'
 import { ImageType } from '@/data/projects'
 
 export default function CarouselComponent({ images }: { images: ImageType[] }) {
@@ -38,7 +37,7 @@ export default function CarouselComponent({ images }: { images: ImageType[] }) {
         <div className="flex">
           {images.map((image, index) => (
             <div key={index} className="min-w-0 shrink-0 grow-0 basis-full">
-              <img src={getImageSrc(image.src)} alt={image.alt} className="w-full rounded" loading="lazy" />
+              <img src={image.src} alt={image.alt} className="w-full rounded" loading="lazy" />
             </div>
           ))}
         </div>

@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation'
 import { Carousel3D } from '@/components/ui/carousel-3d'
-import { getImageSrc } from '@/lib/utils'
 import { type WebsiteProjectType } from '@/data/projects'
 import { useCallback, useMemo } from 'react'
 
@@ -20,7 +19,7 @@ export default function WorkHeroCarousel({ projects }: WorkHeroCarouselProps) {
       projectsWithImages.map((p) => ({
         title: p.title,
         button: 'View Project',
-        src: getImageSrc(p.images[0].src)
+        src: p.images[0].src
       })),
     [projectsWithImages]
   )

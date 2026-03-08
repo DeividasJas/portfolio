@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import projects from '@/data/projects'
-import { getImageSrc } from '@/lib/utils'
+import { projects } from '@/data/projects'
 import CarouselComponent from '@/components/CarouselComponent'
 
 interface ProjectPageProps {
@@ -10,14 +9,14 @@ interface ProjectPageProps {
 }
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ projectName: p.slug }))
+  return projects
+    .filter((p) => p.published)
+    .map((p) => ({ projectName: p.slug }))
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { projectName } = await params
   const project = projects.find((p) => p.slug === projectName)
-
-  const logoUrl = project?.logoSrc ? getImageSrc(project.logoSrc) : undefined
 
   return {
     title: project?.title ?? 'Project',
@@ -25,36 +24,37 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     openGraph: {
       title: project?.title ?? 'Project',
       description: project?.projectDescription?.slice(0, 160) ?? 'Project details',
-      images: logoUrl ? [{ url: logoUrl }] : []
-    }
+      images: project?.logoSrc ? [{ url: project.logoSrc }] : [],
+    },
   }
+}
+
+function highlightKeywords(text: string | undefined, keywords: string[]): JSX.Element[] {
+  if (!text || keywords.length === 0) return [<span key={0}>{text}</span>]
+
+  const regex = new RegExp(`(${keywords.join('|')})`, 'gi')
+  const parts = text.split(regex)
+
+  return parts.map((part, index) =>
+    keywords.some((kw) => part.toLowerCase() === kw.toLowerCase()) ? (
+      <span key={index} className="text-blue-500">
+        {part}
+      </span>
+    ) : (
+      <span key={index}>{part}</span>
+    ),
+  )
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { projectName } = await params
-
   const data = projects.find((p) => p.slug === projectName)
-
-  const keywords = ['basketball registration app', 'personalized AI-generated romance story']
-
-  const highlightKeywords = ({ keywords, text }: { keywords: string[]; text?: string }): JSX.Element[] => {
-    const regex = new RegExp(`(${keywords.join('|')})`, 'gi')
-    const parts = text?.split(regex) ?? []
-
-    return parts.map((part, index) =>
-      keywords.some((keyword) => part.toLowerCase() === keyword.toLowerCase()) ? (
-        <span key={index} className="text-blue-500">
-          {part}
-        </span>
-      ) : (
-        <span key={index}>{part}</span>
-      )
-    )
-  }
 
   if (!data) {
     return <h1 className="mx-auto flex items-center text-center text-xl md:text-3xl">Project not found</h1>
   }
+
+  const keywords = data.highlightKeywords ?? []
 
   return (
     <div className="flex flex-col gap-4 px-8 text-left">
@@ -64,21 +64,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <div className="mx-auto flex max-w-[800px] flex-col gap-4">
         <section>
           <p className="mb-2 text-lg font-semibold">About Project</p>
-          <p>
-            {highlightKeywords({
-              text: data.projectDescription,
-              keywords
-            })}
-          </p>
+          <p>{highlightKeywords(data.projectDescription, keywords)}</p>
         </section>
         <section>
           <p className="mb-2 text-lg font-semibold">My Role</p>
-          <p>
-            {highlightKeywords({
-              text: data.myWorkDescription,
-              keywords
-            })}
-          </p>
+          <p>{highlightKeywords(data.myWorkDescription, keywords)}</p>
         </section>
         <section>
           <p className="mb-2 text-lg font-semibold">Stack</p>

@@ -6,8 +6,11 @@ import { ChevronDown } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Work',
-  description: 'Portfolio of web development projects including basketball registration apps, city tour guides, and more. Built with Next.js, React, and TypeScript.'
+  description:
+    'Portfolio of web development projects including basketball registration apps, city tour guides, and more. Built with Next.js, React, and TypeScript.',
 }
+
+const publishedProjects = projects.filter((p) => p.published)
 
 export default function ProjectsPage() {
   return (
@@ -23,7 +26,7 @@ export default function ProjectsPage() {
         </div>
 
         <div className="w-full">
-          <WorkHeroCarousel projects={projects} />
+          <WorkHeroCarousel projects={publishedProjects} />
         </div>
 
         <a
@@ -42,9 +45,9 @@ export default function ProjectsPage() {
       <section id="projects" className="scroll-mt-12 px-6 pb-20 pt-12 md:px-8">
         <p className="mb-8 text-center text-xs font-medium uppercase tracking-[0.2em] text-slate-500">All Projects</p>
         <ul className="mx-auto grid max-w-6xl grid-cols-1 place-items-center gap-8 md:grid-cols-2 xl:grid-cols-4">
-          {projects.map((project, index) => {
-            return <ProjectCard key={index} project={project} />
-          })}
+          {publishedProjects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
         </ul>
       </section>
     </div>

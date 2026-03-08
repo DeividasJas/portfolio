@@ -1,7 +1,6 @@
 'use client'
 
 import { WebsiteProjectType } from '@/data/projects'
-import { getImageSrc } from '@/lib/utils'
 import Link from 'next/link'
 
 export default function ProjectCard({ project }: { project: WebsiteProjectType }) {
@@ -13,7 +12,7 @@ export default function ProjectCard({ project }: { project: WebsiteProjectType }
           <div className="flex h-44 w-full items-center justify-center bg-slate-800/50 p-8">
             {project.logoSrc ? (
               <img
-                src={getImageSrc(project.logoSrc)}
+                src={project.logoSrc}
                 alt={`${project.title} Logo`}
                 className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
               />
