@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="-mx-4 -mt-20 -mb-4 flex flex-col bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="flex flex-col items-center gap-8 pb-6 pt-24 md:pt-28">
+      <section className="flex flex-col items-center gap-8 pb-6 pt-8 md:pt-12">
         <div className="text-center">
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-slate-400">Portfolio</p>
           <h1 className="text-3xl font-semibold tracking-tight text-slate-50 md:text-5xl">Selected Work</h1>

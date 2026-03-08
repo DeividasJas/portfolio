@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Space_Grotesk } from 'next/font/google'
-import { ClientLayout } from './client-layout'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
@@ -32,9 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={spaceGrotesk.variable}>
-        <ClientLayout>{children}</ClientLayout>
-      </body>
+      <body className={spaceGrotesk.variable}>{children}</body>
     </html>
   )
 }
