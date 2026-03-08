@@ -6,24 +6,48 @@ import Link from 'next/link'
 
 export default function ProjectCard({ project }: { project: WebsiteProjectType }) {
   return (
-    <li className="mx-12 h-64 w-full max-w-[400px] transition hover:scale-105">
-      <Link href={`/work/${project.slug}`} className="h-full w-full">
-        <div className="flex h-4/6 w-full items-center justify-center rounded-t-sm bg-zinc-800 p-10">
-          <img src={getImageSrc(project.logoSrc)} alt={`${project.title} Logo`} className="h-full w-full object-contain" />
-        </div>
-        <div className="flex h-2/6 w-full flex-col justify-center gap-1 overflow-hidden rounded-b-sm bg-zinc-600 pl-8">
-          <p>{project.title}</p>
-          {project.published && (
-            <a
-              href={project.link}
-              rel="noopener noreferrer"
-              target="_blank"
-              onClick={(e) => e.stopPropagation()}
-              className="break-words hover:text-blue-500"
-            >
-              {project.link.includes('https://www.') ? project.link.split('https://www.')[1] : project.link.split('https://')[1]}
-            </a>
-          )}
+    <li className="group w-full max-w-[320px] cursor-pointer">
+      <Link href={`/work/${project.slug}`} className="block h-full w-full">
+        <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/80 transition-all duration-300 group-hover:border-slate-600 group-hover:shadow-lg group-hover:shadow-slate-900/50">
+          {/* Logo Area */}
+          <div className="flex h-44 w-full items-center justify-center bg-slate-800/50 p-8">
+            {project.logoSrc ? (
+              <img
+                src={getImageSrc(project.logoSrc)}
+                alt={`${project.title} Logo`}
+                className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+            ) : (
+              <span className="text-2xl font-semibold text-slate-500">{project.title[0]}</span>
+            )}
+          </div>
+
+          {/* Info Area */}
+          <div className="flex flex-col gap-2.5 p-5">
+            <p className="text-base font-semibold text-slate-100">{project.title}</p>
+
+            {project.stack && project.stack.length > 0 && (
+              <div className="flex flex-wrap gap-1.5">
+                {project.stack.slice(0, 4).map((tech) => (
+                  <span key={tech} className="rounded-full bg-slate-800 px-2.5 py-0.5 text-[11px] font-medium text-slate-400">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {project.published && (
+              <a
+                href={project.link}
+                rel="noopener noreferrer"
+                target="_blank"
+                onClick={(e) => e.stopPropagation()}
+                className="mt-1 text-xs text-slate-500 transition-colors duration-200 hover:text-blue-400"
+              >
+                {project.link.includes('https://www.') ? project.link.split('https://www.')[1] : project.link.split('https://')[1]}
+              </a>
+            )}
+          </div>
         </div>
       </Link>
     </li>
