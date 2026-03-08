@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="layout relative flex min-h-screen flex-col text-pretty bg-zinc-900 text-zinc-300">
+    <div className="layout relative flex min-h-screen flex-col text-pretty bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-zinc-300">
       <Header />
       <div className="snap-scroll-container">
         <main>{children}</main>

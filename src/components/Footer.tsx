@@ -9,10 +9,10 @@ import { usePathname } from 'next/navigation'
 export default function Footer() {
   const pathname = usePathname()
   return (
-    <footer className={`flex flex-col items-center justify-center px-8 pb-4 md:w-full md:px-12 text-zinc-400 bg-inherit ${pathname === '/' && 'bg-[#0c0c0f]'}`}>
+    <footer className={`flex flex-col items-center justify-center px-8 pb-4 md:w-full md:px-12 text-zinc-400 ${pathname === '/' ? 'bg-slate-950' : 'bg-inherit'}`}>
       <section
         id="target-3"
-        className={`${pathname === '/' && 'section'} flex flex-col gap-4 md:gap-8 w-full`}
+        className={`${pathname === '/' ? 'section' : ''} flex flex-col gap-4 md:gap-8 w-full`}
       >
         <div className="flex items-center justify-around w-full pt-6 mt-6 border-t">
           <div>

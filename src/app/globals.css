@@ -9,11 +9,11 @@
 ::after,
 ::before,
 * {
+  backface-visibility: hidden;
   box-sizing: border-box;
   font-weight: 500;
   font-family: var(--font-space-grotesk), 'Space Grotesk', serif;
   font-optical-sizing: auto;
-  backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -93,7 +93,7 @@ html {
   }
 
   .highlight-text {
-    @apply text-blue-500 transition-colors duration-500 ease-in-out sm:group-hover:text-blue-500 sm:text-inherit;
+    @apply text-blue-500 transition-colors duration-500 ease-in-out sm:text-inherit sm:group-hover:text-blue-500;
   }
 }
 
@@ -145,11 +145,11 @@ html {
   }
 
   #target-1 {
-    background: linear-gradient(180deg, #0c0c0f 0%, #18181b 50%, #1d1d21 100%);
+    background: linear-gradient(180deg, #020617 0%, #0f172a 50%, #1e293b 100%);
   }
 
   #target-2 {
-    background: linear-gradient(180deg, #1d1d21 0%, #18181b 50%, #0c0c0f 100%);
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #020617 100%);
   }
 }
 
@@ -166,8 +166,8 @@ html {
   justify-content: center;
   align-items: center;
   z-index: 3;
-  width: calc(var(--toggle-line-width) + 20px);
   padding: 8px 10px;
+  width: calc(var(--toggle-line-width) + 20px);
 }
 
 /* Inactive state (hamburger visible) */
@@ -189,8 +189,8 @@ html {
 }
 
 .nav-button {
-  z-index: 4;
   position: relative;
+  z-index: 4;
   box-sizing: border-box;
   width: var(--toggle-line-width);
   height: var(--nav-btn-height);
