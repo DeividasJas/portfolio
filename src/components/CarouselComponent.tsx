@@ -9,7 +9,8 @@ import { getImageSrc } from '@/lib/utils'
 import { ImageType } from '@/data/projects'
 
 export default function CarouselComponent({ images }: { images: ImageType[] }) {
-  const plugins = useRef([Autoplay({ delay: 3000 }), WheelGesturesPlugin()])
+  const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }))
+  const plugins = useRef([autoplay.current, WheelGesturesPlugin()])
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, plugins.current)
   const [current, setCurrent] = useState(1)
 
@@ -43,11 +44,11 @@ export default function CarouselComponent({ images }: { images: ImageType[] }) {
         </div>
       </div>
       <div className="relative mt-2 hidden h-5 justify-center sm:flex">
-        <button onClick={() => emblaApi?.scrollPrev()} className="relative -left-2 flex h-5 w-5 items-center justify-center rounded-full border border-zinc-400 bg-black">
+        <button onClick={() => { emblaApi?.scrollPrev(); autoplay.current.reset() }} className="relative -left-2 flex h-5 w-5 items-center justify-center rounded-full border border-zinc-400 bg-black">
           <ArrowLeft className="h-3 w-3" />
         </button>
         <button
-          onClick={() => emblaApi?.scrollNext()}
+          onClick={() => { emblaApi?.scrollNext(); autoplay.current.reset() }}
           className="relative -right-2 flex h-5 w-5 items-center justify-center rounded-full border border-zinc-400 bg-inherit"
         >
           <ArrowRight className="h-3 w-3" />

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, RefObject } from 'react'
+import { useEffect, useRef, RefObject } from 'react'
 
 /**
  * Triggers callback when user clicks outside specified element(s)
@@ -13,23 +13,27 @@ export function useOnClickOutside(
   handler: (event: MouseEvent | TouchEvent) => void,
   enabled: boolean = true
 ): void {
+  const handlerRef = useRef(handler)
+  handlerRef.current = handler
+
+  const refsRef = useRef(refs)
+  refsRef.current = refs
+
   useEffect(() => {
     if (!enabled) return
 
     const listener = (event: MouseEvent | TouchEvent) => {
-      const refsArray = Array.isArray(refs) ? refs : [refs]
+      const refsArray = Array.isArray(refsRef.current) ? refsRef.current : [refsRef.current]
 
-      // Check if click is outside all refs
       const clickedOutside = refsArray.every(
         (ref) => ref.current && !ref.current.contains(event.target as Node)
       )
 
       if (clickedOutside) {
-        handler(event)
+        handlerRef.current(event)
       }
     }
 
-    // Use mousedown for better UX (triggers before click)
     document.addEventListener('mousedown', listener)
     document.addEventListener('touchstart', listener)
 
@@ -37,5 +41,5 @@ export function useOnClickOutside(
       document.removeEventListener('mousedown', listener)
       document.removeEventListener('touchstart', listener)
     }
-  }, [refs, handler, enabled])
+  }, [enabled])
 }

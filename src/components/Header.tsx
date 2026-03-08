@@ -9,46 +9,36 @@ import Sidebar from './Sidebar'
 export default function Header() {
   const pathname = usePathname()
 
-  const [mounted, setMounted] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(true);
-  const [size_s_Mobile, setSize_s_Mobile] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    setMounted(true);
-
     const handleScroll = () => {
-      setIsScrolling(window.scrollY > 20);
-    };
+      setIsScrolled(window.scrollY > 20)
+    }
     const handleResize = () => {
-      setSize_s_Mobile(window.innerWidth < 440);
-    };
+      setIsMobile(window.innerWidth < 440)
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
 
-    handleScroll();
-    handleResize();
+    handleScroll()
+    handleResize()
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
-    <header
-      className={`flex items-center justify-start h-0
-        ${pathname !== '/' && 'h-20'}
-        `}
-      id="header"
-    >
+    <header className={`flex h-0 items-center justify-start ${pathname !== '/' ? 'h-20' : ''}`} id="header">
       <Link
         href="/"
-        className={`${mounted && isScrolling && 'bg-opacity-70'}
-        bg-zinc-700 top-[45px] translate-y-[-50%] px-4 py-2 flex gap-2 items-center justify-center rounded-e-md cursor-pointer z-0 fixed z-50`}
+        className={`${isScrolled ? 'bg-opacity-70' : ''} fixed top-[45px] z-50 flex translate-y-[-50%] cursor-pointer items-center justify-center gap-2 rounded-e-md bg-zinc-700 px-4 py-2`}
       >
         <Computer />
-        {mounted && !size_s_Mobile && !isScrolling && <p>Deividas Jasas</p>}
+        {!isMobile && !isScrolled && <p>Deividas Jasas</p>}
       </Link>
       <Sidebar />
     </header>
