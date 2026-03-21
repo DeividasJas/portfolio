@@ -1,6 +1,7 @@
 'use client'
 
 import { WebsiteProjectType } from '@/data/projects'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function ProjectCard({ project }: { project: WebsiteProjectType }) {
@@ -10,11 +11,13 @@ export default function ProjectCard({ project }: { project: WebsiteProjectType }
         <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/80 transition-all duration-300 group-hover:border-slate-600 group-hover:shadow-lg group-hover:shadow-slate-900/50">
           {/* Logo Area */}
           <div className="flex h-44 w-full items-center justify-center bg-slate-800/50 p-8">
-            {project.logoSrc ? (
-              <img
-                src={project.logoSrc}
+            {project.logo ? (
+              <Image
+                src={project.logo}
                 alt={`${project.title} Logo`}
                 className="max-h-24 max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                height={96}
+                width={200}
               />
             ) : (
               <span className="text-2xl font-semibold text-slate-500">{project.title[0]}</span>

@@ -19,7 +19,7 @@ export default function WorkHeroCarousel({ projects }: WorkHeroCarouselProps) {
       projectsWithImages.map((p) => ({
         title: p.title,
         button: 'View Project',
-        src: p.images[0].src
+        src: p.images[0].src.src
       })),
     [projectsWithImages]
   )

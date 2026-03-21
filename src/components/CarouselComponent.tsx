@@ -6,6 +6,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { ImageType } from '@/data/projects'
+import Image from 'next/image'
 
 export default function CarouselComponent({ images }: { images: ImageType[] }) {
   const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }))
@@ -36,8 +37,15 @@ export default function CarouselComponent({ images }: { images: ImageType[] }) {
       <div className="overflow-hidden rounded-xl" ref={emblaRef}>
         <div className="flex">
           {images.map((image, index) => (
-            <div key={index} className="min-w-0 shrink-0 grow-0 basis-full">
-              <img src={image.src} alt={image.alt} className="w-full rounded-xl" loading="lazy" />
+            <div key={index} className="aspect-[16/9] min-w-0 shrink-0 grow-0 basis-full">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                className="h-full w-full rounded-xl object-cover"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                placeholder="blur"
+                sizes="(max-width: 700px) 100vw, 700px"
+              />
             </div>
           ))}
         </div>

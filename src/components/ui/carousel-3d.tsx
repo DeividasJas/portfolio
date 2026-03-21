@@ -93,8 +93,9 @@ const Slide = ({ slide, index, current, handleSlideClick, onButtonClick }: Slide
             alt={title}
             src={src}
             onLoad={imageLoaded}
-            loading="eager"
-            decoding="sync"
+            loading={current === index ? 'eager' : 'lazy'}
+            decoding={current === index ? 'sync' : 'async'}
+            fetchPriority={current === index ? 'high' : 'low'}
           />
           {current === index && <div className="absolute inset-0 bg-black/30 transition-all duration-1000" />}
         </div>

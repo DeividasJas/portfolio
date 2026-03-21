@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     openGraph: {
       title: project?.title ?? 'Project',
       description: project?.projectDescription?.slice(0, 160) ?? 'Project details',
-      images: project?.logoSrc ? [{ url: project.logoSrc }] : []
+      images: project?.logo ? [{ url: project.logo.src }] : []
     }
   }
 }
