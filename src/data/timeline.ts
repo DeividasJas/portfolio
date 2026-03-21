@@ -22,22 +22,14 @@ export const timelineEntries: TimelineEntry[] = [
     organization: 'Netzet',
     startDate: '2024',
     endDate: '2024',
-    description: 'Built responsive web interfaces with React and Tailwind CSS for client projects.'
+    description: 'Built backend services for Fametonic, Parenting Leader, and Flirtist.ai — API development, database design, and third-party integrations.'
   },
   {
     type: 'work',
     title: 'Full-Stack Developer',
-    organization: 'Fametonic',
+    organization: 'Netzet',
     startDate: '2025',
     endDate: 'Present',
-    description: 'Developed backend services with NestJS, TypeORM, and RabbitMQ.'
+    description: 'Own the backend for Fametonic (45K+ users) and built SweetSecrets end to end — AI story generation, payment systems, and CI/CD pipelines.'
   }
-  // {
-  //   type: 'work',
-  //   title: 'Full-Stack Developer',
-  //   organization: 'Freelance',
-  //   startDate: '2024',
-  //   endDate: 'Present',
-  //   description: 'Building full-stack applications with Next.js, Supabase, and AI integrations.'
-  // }
 ]

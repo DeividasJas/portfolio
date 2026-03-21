@@ -37,11 +37,11 @@ export default function CarouselComponent({ images }: { images: ImageType[] }) {
       <div className="overflow-hidden rounded-xl" ref={emblaRef}>
         <div className="flex">
           {images.map((image, index) => (
-            <div key={index} className="aspect-[16/9] min-w-0 shrink-0 grow-0 basis-full">
+            <div key={index} className="min-w-0 shrink-0 grow-0 basis-full">
               <Image
                 src={image.src}
                 alt={image.alt}
-                className="h-full w-full rounded-xl object-cover"
+                className="w-full rounded-xl"
                 loading={index === 0 ? 'eager' : 'lazy'}
                 placeholder="blur"
                 sizes="(max-width: 700px) 100vw, 700px"

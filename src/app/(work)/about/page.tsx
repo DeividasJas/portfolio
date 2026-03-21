@@ -15,56 +15,24 @@ const technologies = ['Next.js', 'Tailwind CSS', 'TypeScript', 'PostgreSQL', 'Ja
 export default function AboutPage() {
   return (
     <div className="px-4 pb-4">
-      {/* Variant 1 — Confident / Direct */}
       <section className="text-md mx-auto my-8 flex max-w-[850px] flex-col items-center gap-4">
         <p>
-          I build <span className="text-blue-500">production systems</span> that handle real traffic. At Fametonic, I ship across the full stack — Next.js frontends,
-          NestJS backends, PostgreSQL, Supabase — and I own the entire pipeline from database schema to Vercel deployment.
+          I&apos;m a <span className="text-blue-500">full-stack developer</span> at Netzet, where I build products that
+          serve real users. My projects include <span className="text-blue-500">Fametonic</span> — a social media growth
+          platform with 45,000+ creators — and <span className="text-blue-500">SweetSecrets</span>, an AI-powered story
+          app where every reader gets a unique narrative shaped by their choices.
         </p>
         <p>
-          My most complex project is <span className="text-blue-500">SweetSecrets</span>, an AI-powered interactive story platform where user choices shape the narrative.
-          I built choice-dependent story funnels, integrated a CRM, and implemented an <span className="text-blue-500">in-app coin economy</span> that drives premium
-          content upsells — all backed by a Supabase + GitHub + Vercel deployment chain.
+          I work across the entire stack — Next.js frontends, NestJS backends, PostgreSQL, Supabase — and own
+          everything from <span className="text-blue-500">database design</span> to deployment pipelines. On my own time
+          I built <span className="text-blue-500">BasketJoin</span>, a pickup basketball organizer, as a solo project
+          from scratch.
         </p>
         <p>
-          I use <span className="text-blue-500">AI tooling</span> heavily in my workflow to ship faster without cutting corners. I prefer full-stack ownership because
-          seeing the whole system means making better architectural decisions. If code doesn't perform under load while staying readable, it's not done.
-        </p>
-      </section>
-
-      {/* Variant 2 — Casual / Friendly */}
-      <section className="text-md mx-auto my-8 flex max-w-[850px] flex-col items-center gap-4">
-        <p>
-          I'm a <span className="text-blue-500">full-stack developer</span> who got into this because I wanted to build things that actually work at scale. These days I'm
-          at Fametonic, working across Next.js, NestJS, PostgreSQL, and Supabase — handling everything from frontend components to{' '}
-          <span className="text-blue-500">CI/CD pipelines</span> and database design.
-        </p>
-        <p>
-          One project I'm especially proud of is <span className="text-blue-500">SweetSecrets</span> — an AI-driven story platform where every reader choice branches the
-          narrative differently. I wired up the whole thing: story funnels, a CRM integration, a <span className="text-blue-500">coin-based economy</span> for premium
-          content, and a full Supabase-to-Vercel deployment pipeline.
-        </p>
-        <p>
-          I lean hard on <span className="text-blue-500">AI tools</span> to move fast, and I like owning the full stack so I can see how decisions ripple through the
-          system. Clean code that holds up under real traffic — that's what I'm after.
-        </p>
-      </section>
-
-      {/* Variant 3 — Professional / Measured */}
-      <section className="text-md mx-auto my-8 flex max-w-[850px] flex-col items-center gap-4">
-        <p>
-          I'm a <span className="text-blue-500">full-stack developer</span> focused on building production applications that serve thousands of users. Currently at
-          Fametonic, I work across the entire stack — <span className="text-blue-500">Next.js</span>, NestJS, PostgreSQL, Prisma, and Supabase — with responsibility for
-          both feature development and deployment infrastructure.
-        </p>
-        <p>
-          A key project has been <span className="text-blue-500">SweetSecrets</span>, an AI-powered interactive story platform. I designed choice-dependent narrative
-          funnels, integrated CRM tooling for user management, and built an <span className="text-blue-500">in-app coin economy</span> powering premium content access. The
-          system runs on a Supabase + GitHub + Vercel CI/CD pipeline I set up end to end.
-        </p>
-        <p>
-          I leverage <span className="text-blue-500">AI-assisted development</span> to accelerate delivery and prefer full-stack ownership for the architectural clarity it
-          provides. I prioritize code that is both performant under load and straightforward to maintain.
+          I use <span className="text-blue-500">AI tools</span> daily to ship faster, and I prefer full-stack ownership
+          because seeing the whole system means making better decisions. I&apos;m{' '}
+          <span className="text-blue-500">open to new opportunities</span> where I can keep building products people
+          actually use.
         </p>
       </section>
 
