@@ -21,7 +21,7 @@ export default function HomePage() {
       </section>
       <section
         id="target-2"
-        className="group flex flex-col justify-center gap-8 px-10 py-10 text-center section md:gap-24 h-[400px] bg-zinc-800 "
+        className="group flex flex-col justify-center gap-8 px-10 py-10 text-center section md:gap-24 h-[400px] bg-slate-800/50"
       >
         <p className="md:max-w-[660px] max-w-[497px] text-lg md:text-2xl mx-auto">
           I'm a Junior Programmer with a{' '}

@@ -1,78 +1,78 @@
 'use client'
 
+import { useState, useEffect, useCallback, useRef } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ImageType } from '@/data/projects'
+import Image from 'next/image'
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from './ui/carousel'
-import { type CarouselApi } from '@/components/ui/carousel'
-import { ImageType } from '@/types/project'
-import { getImageSrc } from '@/lib/utils'
-import { useEffect, useState } from 'react'
+export default function CarouselComponent({ images }: { images: ImageType[] }) {
+  const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }))
+  const plugins = useRef([autoplay.current, WheelGesturesPlugin()])
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, plugins.current)
+  const [current, setCurrent] = useState(1)
 
-interface CarouselComponentProps {
-  images: ImageType[]
-}
-
-export default function CarouselComponent({ images }: CarouselComponentProps) {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-  const [count, setCount] = useState(0);
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return
+    setCurrent(emblaApi.selectedScrollSnap() + 1)
+  }, [emblaApi])
 
   useEffect(() => {
-    if (!api) {
-      return;
+    if (!emblaApi) return
+    onSelect()
+    emblaApi.on('select', onSelect)
+    emblaApi.on('reInit', onSelect)
+    return () => {
+      emblaApi.off('select', onSelect)
+      emblaApi.off('reInit', onSelect)
     }
+  }, [emblaApi, onSelect])
 
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
+  if (!images?.length) return null
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
   return (
-    <>
-      <div className="w-full mx-auto sm:w-[90vw] max-w-[700px] flex-1 ">
-        <Carousel
-          setApi={setApi}
-          plugins={[
-            Autoplay({
-              delay: 3000,
-            }),
-          ]}
-          className="w-full mx-auto"
-        >
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {images.map((image: ImageType, index: number) => {
-              return (
-                <CarouselItem key={index} className="pl-2 md:pl-4">
-                  <img
-                    src={getImageSrc(image.src)}
-                    alt={image.alt}
-                    className="rounded"
-                    loading="lazy"
-                  />
-                </CarouselItem>
-              )
-            })}
-          </CarouselContent>
-          <div className="relative hidden sm:flex justify-center h-5 mt-2">
-            <CarouselPrevious className="relative w-5 h-5 bg-black border-zinc-400 -left-2" />
-            <CarouselNext className="relative w-5 h-5 bg-inherit border-zinc-400 -right-2" />
-          </div>
-        </Carousel>
-        <div className="mt-1 text-xs text-center opacity-50">
-          <p>
-            Slide {current} of {count}
-            <span className="sm:hidden"> Swipe to view</span>
-          </p>
+    <div className="mx-auto max-w-[700px]">
+      <div className="overflow-hidden rounded-xl" ref={emblaRef}>
+        <div className="flex">
+          {images.map((image, index) => (
+            <div key={index} className="min-w-0 shrink-0 grow-0 basis-full">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                className="w-full rounded-xl"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                placeholder="blur"
+                sizes="(max-width: 700px) 100vw, 700px"
+              />
+            </div>
+          ))}
         </div>
       </div>
-    </>
-  );
+      <div className="mt-4 flex items-center justify-center gap-4">
+        <button
+          onClick={() => {
+            emblaApi?.scrollPrev()
+            autoplay.current.reset()
+          }}
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 transition duration-200 hover:-translate-y-0.5 active:translate-y-0.5"
+        >
+          <ArrowLeft className="text-neutral-200" />
+        </button>
+        <span className="text-sm text-zinc-400">
+          Slide {current} of {images.length}
+        </span>
+        <button
+          onClick={() => {
+            emblaApi?.scrollNext()
+            autoplay.current.reset()
+          }}
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 transition duration-200 hover:-translate-y-0.5 active:translate-y-0.5"
+        >
+          <ArrowRight className="text-neutral-200" />
+        </button>
+      </div>
+    </div>
+  )
 }
