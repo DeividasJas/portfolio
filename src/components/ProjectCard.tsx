@@ -39,15 +39,25 @@ export default function ProjectCard({ project }: { project: WebsiteProjectType }
             )}
 
             {project.published && (
-              <a
-                href={project.link}
-                rel="noopener noreferrer"
-                target="_blank"
-                onClick={(e) => e.stopPropagation()}
-                className="mt-1 text-xs text-slate-500 transition-colors duration-200 hover:text-blue-400"
+              <span
+                role="link"
+                tabIndex={0}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  window.open(project.link, '_blank', 'noopener,noreferrer')
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    window.open(project.link, '_blank', 'noopener,noreferrer')
+                  }
+                }}
+                className="mt-1 cursor-pointer text-xs text-slate-500 transition-colors duration-200 hover:text-blue-400"
               >
                 {project.link.includes('https://www.') ? project.link.split('https://www.')[1] : project.link.split('https://')[1]}
-              </a>
+              </span>
             )}
           </div>
         </div>
