@@ -164,7 +164,7 @@ function TimelineDetail({ item, index }: { item: TimelineItem; index: number }) 
       {/* Vertical line */}
       <div className="relative flex flex-col items-center">
         <div
-          className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-500"
+          className="z-[1] flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-500"
           style={{
             borderColor: visible ? item.color : undefined,
             backgroundColor: visible ? `${item.color}15` : undefined,
