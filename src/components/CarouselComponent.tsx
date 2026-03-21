@@ -33,30 +33,38 @@ export default function CarouselComponent({ images }: { images: ImageType[] }) {
 
   return (
     <div className="mx-auto max-w-[700px]">
-      <div className="overflow-hidden rounded" ref={emblaRef}>
+      <div className="overflow-hidden rounded-xl" ref={emblaRef}>
         <div className="flex">
           {images.map((image, index) => (
             <div key={index} className="min-w-0 shrink-0 grow-0 basis-full">
-              <img src={image.src} alt={image.alt} className="w-full rounded" loading="lazy" />
+              <img src={image.src} alt={image.alt} className="w-full rounded-xl" loading="lazy" />
             </div>
           ))}
         </div>
       </div>
-      <div className="relative mt-2 hidden h-5 justify-center sm:flex">
-        <button onClick={() => { emblaApi?.scrollPrev(); autoplay.current.reset() }} className="relative -left-2 flex h-5 w-5 items-center justify-center rounded-full border border-zinc-400 bg-black">
-          <ArrowLeft className="h-3 w-3" />
-        </button>
+      <div className="mt-4 flex items-center justify-center gap-4">
         <button
-          onClick={() => { emblaApi?.scrollNext(); autoplay.current.reset() }}
-          className="relative -right-2 flex h-5 w-5 items-center justify-center rounded-full border border-zinc-400 bg-inherit"
+          onClick={() => {
+            emblaApi?.scrollPrev()
+            autoplay.current.reset()
+          }}
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 transition duration-200 hover:-translate-y-0.5 active:translate-y-0.5"
         >
-          <ArrowRight className="h-3 w-3" />
+          <ArrowLeft className="text-neutral-200" />
+        </button>
+        <span className="text-sm text-zinc-400">
+          Slide {current} of {images.length}
+        </span>
+        <button
+          onClick={() => {
+            emblaApi?.scrollNext()
+            autoplay.current.reset()
+          }}
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 transition duration-200 hover:-translate-y-0.5 active:translate-y-0.5"
+        >
+          <ArrowRight className="text-neutral-200" />
         </button>
       </div>
-      <p className="mt-1 text-center text-xs opacity-50">
-        Slide {current} of {images.length}
-        <span className="sm:hidden"> Swipe to view</span>
-      </p>
     </div>
   )
 }

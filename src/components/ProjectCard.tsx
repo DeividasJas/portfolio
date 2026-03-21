@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function ProjectCard({ project }: { project: WebsiteProjectType }) {
   return (
-    <li className="group w-full max-w-[320px] cursor-pointer">
+    <li className="group w-full cursor-pointer">
       <Link href={`/work/${project.slug}`} className="block h-full w-full">
         <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/80 transition-all duration-300 group-hover:border-slate-600 group-hover:shadow-lg group-hover:shadow-slate-900/50">
           {/* Logo Area */}
@@ -14,7 +14,7 @@ export default function ProjectCard({ project }: { project: WebsiteProjectType }
               <img
                 src={project.logoSrc}
                 alt={`${project.title} Logo`}
-                className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                className="max-h-24 max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
               />
             ) : (
               <span className="text-2xl font-semibold text-slate-500">{project.title[0]}</span>

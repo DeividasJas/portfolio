@@ -6,8 +6,7 @@ import { ChevronDown } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Work',
-  description:
-    'Portfolio of web development projects including basketball registration apps, city tour guides, and more. Built with Next.js, React, and TypeScript.',
+  description: 'Portfolio of web development projects including basketball registration apps, city tour guides, and more. Built with Next.js, React, and TypeScript.'
 }
 
 const publishedProjects = projects.filter((p) => p.published)
@@ -44,7 +43,7 @@ export default function ProjectsPage() {
       {/* Projects Grid */}
       <section id="projects" className="scroll-mt-12 px-6 pb-20 pt-12 md:px-8">
         <p className="mb-8 text-center text-xs font-medium uppercase tracking-[0.2em] text-slate-500">All Projects</p>
-        <ul className="mx-auto grid max-w-6xl grid-cols-1 place-items-center gap-8 md:grid-cols-2 xl:grid-cols-4">
+        <ul className="mx-auto grid max-w-6xl grid-cols-1 place-items-center gap-8 md:grid-cols-2 xl:grid-cols-3">
           {publishedProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
