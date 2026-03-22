@@ -100,7 +100,9 @@ const Slide = ({ slide, index, current, handleSlideClick, onButtonClick }: Slide
           {current === index && <div className="absolute inset-0 bg-black/30 transition-all duration-1000" />}
         </div>
 
-        <article className={`relative p-[4vmin] transition-opacity duration-1000 ease-in-out ${current === index ? 'visible opacity-100' : 'invisible opacity-0'}`}>
+        <article
+          className={`relative p-[4vmin] transition-opacity duration-1000 ease-in-out ${current === index ? 'visible opacity-100' : 'invisible opacity-0'}`}
+        >
           <h2 className="relative text-lg font-semibold md:text-2xl lg:text-4xl">{title}</h2>
           <div className="flex justify-center">
             <button

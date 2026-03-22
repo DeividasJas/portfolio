@@ -123,7 +123,10 @@ function ProjectTimeline({ items }: { items: TimelineItem[] }) {
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
                   {/* Bar label — text color matches the bar color, turns white on hover */}
-                  <span className="whitespace-nowrap text-xs font-medium transition-colors duration-200" style={{ color: isHovered ? '#fff' : item.color }}>
+                  <span
+                    className="whitespace-nowrap text-xs font-medium transition-colors duration-200"
+                    style={{ color: isHovered ? '#fff' : item.color }}
+                  >
                     {item.label}
                     {item.solo && <span className="ml-1.5 text-[10px] opacity-60">(solo)</span>}
                   </span>

@@ -3,25 +3,25 @@ import { NavbarLink, NavbarSocial } from '@/types/navigation'
 export const navbarLinks: NavbarLink[] = [
   {
     title: 'Home',
-    path: '/',
+    path: '/'
   },
   {
     title: 'About',
-    path: '/about',
+    path: '/about'
   },
   {
     title: 'Work',
-    path: '/work',
-  },
+    path: '/work'
+  }
 ]
 
 export const navbarSocials: NavbarSocial[] = [
   {
     title: 'LinkedIn',
-    path: 'https://www.linkedin.com/in/deividasjasas/',
+    path: 'https://www.linkedin.com/in/deividasjasas/'
   },
   {
     title: 'GitHub',
-    path: 'https://github.com/DeividasJas',
-  },
+    path: 'https://github.com/DeividasJas'
+  }
 ]

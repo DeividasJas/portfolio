@@ -10,25 +10,40 @@ export const metadata: Metadata = {
   description: 'Full-stack developer building production apps & api integrations'
 }
 
-const technologies = ['Next.js', 'Tailwind CSS', 'TypeScript', 'PostgreSQL', 'JavaScript', 'Prisma', 'Node.js', 'GitHub', 'Vercel', 'Docker', 'Express.js', 'Supabase']
+const technologies = [
+  'Next.js',
+  'Tailwind CSS',
+  'TypeScript',
+  'PostgreSQL',
+  'JavaScript',
+  'Prisma',
+  'Node.js',
+  'GitHub',
+  'Vercel',
+  'Docker',
+  'Express.js',
+  'Supabase'
+]
 
 export default function AboutPage() {
   return (
     <div className="px-4 pb-4">
       <section className="text-md mx-auto my-8 flex max-w-[850px] flex-col items-center gap-4">
         <p>
-          I&apos;m a <span className="text-blue-500">full-stack developer</span> at Netzet, where I build products that serve real users. My projects include{' '}
-          <span className="text-blue-500">Fametonic</span> — a social media growth platform with 45,000+ creators — and{' '}
-          <span className="text-blue-500">SweetSecrets</span>, an AI-powered story app where every reader gets a unique narrative shaped by their choices.
+          I&apos;m a <span className="text-blue-500">full-stack developer</span> at Netzet, where I build products that serve real users. My
+          projects include <span className="text-blue-500">Fametonic</span> — a social media growth platform with 45,000+ creators — and{' '}
+          <span className="text-blue-500">SweetSecrets</span>, an AI-powered story app where every reader gets a unique narrative shaped by their
+          choices.
         </p>
         <p>
           I work across the entire stack — Next.js frontends, NestJS backends, PostgreSQL, Supabase — and own everything from{' '}
-          <span className="text-blue-500">database design</span> to deployment pipelines. On my own time I built <span className="text-blue-500">BasketJoin</span>, a
-          pickup basketball organizer, as a solo project from scratch.
+          <span className="text-blue-500">database design</span> to deployment pipelines. On my own time I built{' '}
+          <span className="text-blue-500">BasketJoin</span>, a pickup basketball organizer, as a solo project from scratch.
         </p>
         <p>
-          I use <span className="text-blue-500">AI tools</span> daily to ship faster, and I prefer full-stack ownership because seeing the whole system means making
-          better decisions. I&apos;m <span className="text-blue-500">open to new opportunities</span> where I can keep building products people actually use.
+          I use <span className="text-blue-500">AI tools</span> daily to ship faster, and I prefer full-stack ownership because seeing the whole
+          system means making better decisions. I&apos;m <span className="text-blue-500">open to new opportunities</span> where I can keep
+          building products people actually use.
         </p>
       </section>
 

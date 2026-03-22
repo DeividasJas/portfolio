@@ -8,11 +8,7 @@ import { useEffect } from 'react'
  * @param callback - Function to execute when key is pressed
  * @param enabled - Whether the hook is active (default: true)
  */
-export function useKeyboardShortcut(
-  key: string,
-  callback: () => void,
-  enabled: boolean = true
-): void {
+export function useKeyboardShortcut(key: string, callback: () => void, enabled: boolean = true): void {
   useEffect(() => {
     if (!enabled) return
 

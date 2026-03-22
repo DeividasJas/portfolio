@@ -6,7 +6,8 @@ import { ChevronDown } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Work',
-  description: 'Portfolio of web development projects including basketball registration apps, city tour guides, and more. Built with Next.js, React, and TypeScript.'
+  description:
+    'Portfolio of web development projects including basketball registration apps, city tour guides, and more. Built with Next.js, React, and TypeScript.'
 }
 
 const publishedProjects = projects.filter((p) => p.published)

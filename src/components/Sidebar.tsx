@@ -33,12 +33,9 @@ export default function Sidebar() {
         />
       </div>
 
-      <nav
-        className={`sidebar text-zinc-800 ${open ? 'sidebar-active' : ''}`}
-        ref={sidebarRef}
-      >
+      <nav className={`sidebar text-zinc-800 ${open ? 'sidebar-active' : ''}`} ref={sidebarRef}>
         <div className={`sidebar-content ${open ? 'sidebar-content-active' : ''}`}>
-          <ul className="flex flex-row items-start justify-start w-full gap-4">
+          <ul className="flex w-full flex-row items-start justify-start gap-4">
             {navbarLinks.map((link) => (
               <li key={link.path}>
                 <Link href={link.path} onClick={close}>
@@ -48,29 +45,19 @@ export default function Sidebar() {
             ))}
           </ul>
 
-          <div className="relative flex flex-col items-start justify-start w-full gap-2">
+          <div className="relative flex w-full flex-col items-start justify-start gap-2">
             <p className="flex items-center gap-2">
               SAY HELLO <MailOpen size={20} strokeWidth={2} />
             </p>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="mail-hover"
-              onClick={close}
-            >
+            <a href={`mailto:${siteConfig.email}`} className="mail-hover" onClick={close}>
               {siteConfig.email}
             </a>
           </div>
 
-          <ul className="flex flex-row items-start justify-start w-full gap-4">
+          <ul className="flex w-full flex-row items-start justify-start gap-4">
             {navbarSocials.map((link) => (
               <li key={link.path}>
-                <a
-                  href={link.path}
-                  onClick={close}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={link.title}
-                >
+                <a href={link.path} onClick={close} target="_blank" rel="noreferrer" aria-label={link.title}>
                   {link.title}
                 </a>
               </li>

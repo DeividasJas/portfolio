@@ -25,9 +25,7 @@ export function useOnClickOutside(
     const listener = (event: MouseEvent | TouchEvent) => {
       const refsArray = Array.isArray(refsRef.current) ? refsRef.current : [refsRef.current]
 
-      const clickedOutside = refsArray.every(
-        (ref) => ref.current && !ref.current.contains(event.target as Node)
-      )
+      const clickedOutside = refsArray.every((ref) => ref.current && !ref.current.contains(event.target as Node))
 
       if (clickedOutside) {
         handlerRef.current(event)

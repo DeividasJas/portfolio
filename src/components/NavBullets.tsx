@@ -6,7 +6,7 @@ export default function NavBullets() {
   return (
     <ScrollSpy activeClass="nav-active" behavior="smooth">
       <nav>
-        <ul className="flex flex-col items-center justify-center gap-4 min-h-min ">
+        <ul className="flex min-h-min flex-col items-center justify-center gap-4">
           <li>
             <a href="#target-1" className="nav-bullet-inactive"></a>
           </li>
@@ -19,5 +19,5 @@ export default function NavBullets() {
         </ul>
       </nav>
     </ScrollSpy>
-  );
+  )
 }

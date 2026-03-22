@@ -65,7 +65,16 @@ export const projects: WebsiteProjectType[] = [
     myWorkDescription:
       'Built at Netzet. Designed and built the branching onboarding funnels where each answer changes the next question, wired up AI story generation through Claude, and built a coin store that drives premium upsells. Added a likes/views system to surface popular stories and integrated a CRM for lifecycle messaging. Set up the full CI/CD pipeline — code pushes trigger database migrations and deploy automatically.',
     stack: ['nextjs', 'tailwind', 'supabase', 'claude', 'vercel', 'github actions'],
-    highlightKeywords: ['interactive romance story', 'personalized stories', 'collect coins', 'Built at Netzet', 'branching onboarding funnels', 'AI story generation', 'coin store', 'CI/CD pipeline']
+    highlightKeywords: [
+      'interactive romance story',
+      'personalized stories',
+      'collect coins',
+      'Built at Netzet',
+      'branching onboarding funnels',
+      'AI story generation',
+      'coin store',
+      'CI/CD pipeline'
+    ]
   },
   {
     title: 'Fametonic',
@@ -79,7 +88,15 @@ export const projects: WebsiteProjectType[] = [
     myWorkDescription:
       'Built at Netzet. Owned the entire backend for a platform serving 45K+ users. Built the account analysis system that runs deep profile breakdowns using third-party scrapers, with BullMQ handling long-running jobs so the app stays responsive. Also built the image generation pipeline and AI chatbot. Designed the database layer with TypeORM on PostgreSQL.',
     stack: ['nestjs', 'typeorm', 'rabbitmq', 'bullmq', 'postgresql'],
-    highlightKeywords: ['45,000+ creators', 'AI-powered deep analysis', 'image generation', 'AI chatbot', '45K+ users', 'BullMQ', 'Built at Netzet']
+    highlightKeywords: [
+      '45,000+ creators',
+      'AI-powered deep analysis',
+      'image generation',
+      'AI chatbot',
+      '45K+ users',
+      'BullMQ',
+      'Built at Netzet'
+    ]
   },
   {
     title: 'WanderVilnius',
