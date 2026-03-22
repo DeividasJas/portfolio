@@ -7,44 +7,25 @@ export default function HomePage() {
   return (
     <>
       <MouseTrackingEffect />
-      <section
-        id="target-1"
-        className="section h-[400px] px-10 flex gap-8 md:gap-24 flex-col justify-center text-center "
-      >
-        <h1 className="z-0 text-2xl whitespace-normal md:text-4xl">
-          Hi, I'm Deividas Jasas, a Passionate Web Developer.
+      <section id="target-1" className="section flex h-[400px] flex-col justify-center gap-8 px-10 text-center md:gap-24">
+        <h1 className="z-0 whitespace-normal text-2xl md:text-4xl">
+          I&apos;m Deividas Jasas. I build products that people use.
         </h1>
-        <h3 className="mx-4 md:max-w-[600px] md:text-2xl text-xl">
-          I create modern, responsive websites that combine clean design with
-          seamless functionality.
+        <h3 className="mx-4 text-xl md:max-w-[600px] md:text-2xl">
+          Full-stack developer at Netzet. 45,000+ users across my projects.
         </h3>
       </section>
-      <section
-        id="target-2"
-        className="group flex flex-col justify-center gap-8 px-10 py-10 text-center section md:gap-24 h-[400px] bg-slate-800/50"
-      >
-        <p className="md:max-w-[660px] max-w-[497px] text-lg md:text-2xl mx-auto">
-          I'm a Junior Programmer with a{' '}
-          <span className="highlight-text">
-            passion
-          </span>{' '}
-          for building web experiences that stand out. Whether it's crafting
-          sleek landing pages or complex applications, I focus on making every{' '}
-          <span className="highlight-text">
-            detail
-          </span>{' '}
-          count.
+      <section id="target-2" className="section group flex h-[400px] flex-col justify-center gap-8 bg-slate-800/50 px-10 py-10 text-center md:gap-24">
+        <p className="mx-auto max-w-[497px] text-lg md:max-w-[660px] md:text-2xl">
+          I don&apos;t have ten years of experience. I have <span className="highlight-text">products in production</span>, users who depend on them,
+          and code that hasn&apos;t <span className="highlight-text">gone down</span>.
         </p>
         <h2 className="text-2xl md:text-3xl">
-          Let's{' '}
-          <span className="highlight-text">
-            Build
-          </span>{' '}
-          Something Great Together.
+          <span className="highlight-text">Judge</span> for yourself.
         </h2>
       </section>
 
-      <div className="fixed hidden md:block top-1/2 right-4">
+      <div className="fixed right-4 top-1/2 hidden md:block">
         <NavBullets />
       </div>
     </>
